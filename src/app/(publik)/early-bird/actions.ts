@@ -58,6 +58,15 @@ export async function submitEarlyBirdAction(_prev: EarlyBirdState, form: FormDat
   const decide = decisionLinks({ email: values.email, name: values.name, organization: values.organization, size: values.size, role: values.role, lang }, base);
   if (!decide) console.warn("[early-bird] EARLY_BIRD_SECRET is not set; the team email has no invite or decline links");
   const note = decide ? `\n\n${t("eb.mail.decide", String(DECISION_DAYS))}` : "";
+  const consentText = t("eb.team.compliance", versions[0], versions[1], `${formatDateMedium("id", now)} ${formatTime("id", now)}`);
+  const teamRows = [
+    { label: t("eb.f.name"), value: values.name },
+    { label: t("eb.f.email"), value: values.email, isLink: true },
+    { label: t("eb.f.organization"), value: values.organization },
+    { label: t("eb.f.size"), value: size },
+    { label: t("eb.f.role"), value: t(`eb.role.${values.role}` as MessageKey) },
+    { label: t("language.label"), value: t(lang === "en" ? "language.en" : "language.id") },
+  ];
   try {
     await sendEmail({
       to: EARLY_BIRD_INBOX,
@@ -67,8 +76,15 @@ export async function submitEarlyBirdAction(_prev: EarlyBirdState, form: FormDat
       html: emailHtml(teamText + note, {
         base,
         lang: "id",
+        badge: t("eb.team.badge"),
+        title: t("eb.team.title"),
+        subtitle: t("eb.team.subtitle"),
+        rows: teamRows,
+        complianceTitle: t("eb.team.complianceTitle"),
+        compliance: consentText,
         links: [values.email],
         actions: decide ? [{ label: t("eb.mail.accept"), href: decide.accept }, { label: t("eb.mail.deny"), href: decide.deny }] : undefined,
+        note: decide ? t("eb.mail.decide", String(DECISION_DAYS)) : undefined,
       }),
     });
   } catch (e) {

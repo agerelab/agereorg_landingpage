@@ -48,4 +48,31 @@ describe("FE-18 — HTML email layout", () => {
     expect(html).not.toContain('href="https://evil.example');
     expect(html).toContain("Organization: https://evil.example/login");
   });
+
+  it("renders structured key-value table, header badge, and compliance box when specified", () => {
+    const html = emailHtml("", {
+      base,
+      lang: "id",
+      badge: "Early Bird Application",
+      title: "Pendaftaran Early Bird Baru",
+      subtitle: "Rincian permohonan",
+      rows: [
+        { label: "Nama Lengkap", value: "Rina Kartika" },
+        { label: "Alamat Email", value: "rina@majujaya.co.id", isLink: true },
+      ],
+      compliance: "Syarat Program v1.0",
+      actions: [{ label: "Terima", href: `${base}/x?d=accept&t=a` }, { label: "Tolak", href: `${base}/x?d=deny&t=a` }],
+      note: "Berlaku 30 hari",
+    });
+    expect(html).toContain("Early Bird Application");
+    expect(html).toContain("Pendaftaran Early Bird Baru");
+    expect(html).toContain("Rincian permohonan");
+    expect(html).toContain("Nama Lengkap");
+    expect(html).toContain("Rina Kartika");
+    expect(html).toContain('<a href="mailto:rina@majujaya.co.id"');
+    expect(html).toContain("Persetujuan &amp; Kepatuhan");
+    expect(html).toContain("Syarat Program v1.0");
+    expect(html).toContain("Berlaku 30 hari");
+    expect(html).toContain("max-width:580px");
+  });
 });
