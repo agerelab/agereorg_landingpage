@@ -1,10 +1,11 @@
 // "Kendali" on the public home (FE-18 v2, agere-org-landing-v2.html "trust"): what an Owner can count on, in
 // nine short promises. Each one is backed by the PRD: roles and Terbatas spaces checked on the server (PRD-04),
 // audit kept one rolling year (PRD-13 L2), the OpenAI API called directly with ZDR requested (D162; the copy waits for
-// the 8 Jan 2027 gate, README), Postgres in Singapore, downgrade pauses
-// instead of deleting (D83), credits stop only AI, drafts survive a dropped connection (D128), DOKU with
+// the 8 Jan 2027 gate, README), data that stays the customer's (no country named: D170 and D171 put the
+// database in Indonesia while Privacy Policy v1.0 still says Singapore, so the home names none until OPS-02
+// v1.1; PO, 26 Oct 2026, option A), downgrade pauses instead of deleting (D83), credits stop only AI, drafts survive a dropped connection (D128), DOKU with
 // invoices 7 days ahead (D98), and a language per person (D45).
-import { BatteryLow, CircleArrowDown, EyeOff, History, Languages, MapPin, QrCode, ShieldCheck, WifiOff } from "lucide-react";
+import { BatteryLow, CircleArrowDown, Database, EyeOff, History, Languages, QrCode, ShieldCheck, WifiOff } from "lucide-react";
 import type { MessageKey, translator } from "@/i18n";
 
 type T = ReturnType<typeof translator>;
@@ -13,7 +14,7 @@ const PROMISES: { icon: React.ComponentType<{ className?: string }>; id: string 
   { icon: ShieldCheck, id: "access" },
   { icon: History, id: "audit" },
   { icon: EyeOff, id: "ai" },
-  { icon: MapPin, id: "data" },
+  { icon: Database, id: "data" },
   { icon: CircleArrowDown, id: "downgrade" },
   { icon: BatteryLow, id: "credits" },
   { icon: WifiOff, id: "offline" },
