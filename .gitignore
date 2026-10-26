@@ -14,3 +14,6 @@ npm-debug.log*
 .data
 *.zip
 tmp/
+
+# Dev email preview must never be served publicly (applicant data)
+public/last-email.html

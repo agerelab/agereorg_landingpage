@@ -29,6 +29,17 @@ const logSender: EmailSender = async (msg) => {
     return;
   }
   console.log(`\n[email] to ${msg.to}\n[email] ${msg.subject}\n${msg.text}\n`);
+  if (msg.html) {
+    try {
+      const fs = await import("node:fs");
+      const path = await import("node:path");
+      const dir = path.join(process.cwd(), ".data");
+      if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+      const filePath = path.join(dir, "last-email.html");
+      fs.writeFileSync(filePath, msg.html, "utf8");
+      console.log(`[email] Pratinjau HTML disimpan: file://${filePath}\n`);
+    } catch {}
+  }
 };
 
 let override: EmailSender | undefined;
