@@ -2,14 +2,14 @@
 title: Kebijakan Pengembalian Dana agere/org
 doc: refund
 lang: id
-version: "1.1"
-effective_date: "[tanggal terbit, sebelum R2]"
+version: "1.0"
+effective_date: 2026-10-16
 authoritative: true
 ---
 
 # Kebijakan Pengembalian Dana agere/org
 
-Versi 1.1 · berlaku sejak [tanggal terbit, sebelum R2]
+Versi 1.0 · berlaku sejak 16 Oktober 2026
 
 Paket Tim dibayar di muka per Periode tagihan. Membatalkan langganan menghentikan perpanjangan pada akhir periode berjalan, dan Layanan tetap aktif sampai saat itu. Karena itu, pembatalan biasa tidak menimbulkan pengembalian dana. Kebijakan ini menjelaskan kapan kami tetap mengembalikan dana. Istilah yang dipakai mengikuti Ketentuan Layanan.
 
@@ -29,7 +29,7 @@ Paket Tim dibayar di muka per Periode tagihan. Membatalkan langganan menghentika
 
 Contoh: Organisasi membayar Tim tahunan 3 Kursi sebesar 3 × Rp708.000 = Rp2.124.000. Fungsi utama dihapus pada hari ke-100, sehingga sisa periode 365 − 100 = 265 hari. Pengembaliannya Rp2.124.000 × 265 ÷ 365 = Rp1.542.082.
 
-Setelah pengembalian sisa periode, langganan berakhir hari itu dan Organisasi menjadi Kedaluwarsa menurut Ketentuan Layanan Pasal 6.6, tanpa kehilangan data.
+Setelah pengembalian sisa periode, langganan berakhir hari itu dan Organisasi pindah ke paket Free tanpa kehilangan data.
 
 ## 2. Kapan dana tidak dikembalikan
 
