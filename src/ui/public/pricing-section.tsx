@@ -4,7 +4,8 @@
 // Early bird first (PO, 7 Oct 2026: it is the way in before launch, now a waitlist until gate R2), then the
 // 14-day trial and Tim (recommended), with the Yearly / Monthly switch, then what happens after the trial
 // and the apps that follow (no tax text, D134). There is no Free plan (D149).
-// Until the app opens, the Trial and Team buttons explain the early bird in a dialog (PO, 9 Oct 2026).
+// Until the app opens, the Trial and Team buttons explain the early bird in a dialog (PO, 9 Oct 2026), and both
+// plans carry "Segera hadir" with a line saying they open at launch (PO, 21 Oct 2026).
 // Every number comes from src/modules/billing/plans.ts.
 import * as React from "react";
 import Link from "next/link";
@@ -51,7 +52,7 @@ export function PricingSection({ locale, heading = "h2" }: { locale: Locale; hea
       lines: [ebCredits, t("ps.eb.f2"), t("ps.eb.f3"), t("ps.eb.f4")],
     },
     {
-      id: "trial", name: t("ps.trial.name"), desc: t("ps.trial.desc"), price: money(0),
+      id: "trial", name: t("ps.trial.name"), soon: true, desc: t("ps.trial.desc"), price: money(0),
       note: [t("ps.trial.note1", n(TRIAL_DAYS)), t("ps.trial.note2", n(TRIAL_EXTENSION.totalDays))],
       cta: <Button variant="outline" className="w-full" onClick={openEb}>{t("ps.trial.cta", n(TRIAL_DAYS))}</Button>,
       lines: [
@@ -63,7 +64,7 @@ export function PricingSection({ locale, heading = "h2" }: { locale: Locale; hea
       ],
     },
     {
-      id: "team", name: t("ps.team.name"), badge: t("ps.team.badge"), desc: t("ps.team.desc"), price: money(team.price[cycle]),
+      id: "team", name: t("ps.team.name"), badge: t("ps.team.badge"), soon: true, desc: t("ps.team.desc"), price: money(team.price[cycle]),
       note: cycle === "yearly" ? [t("ps.team.perSeatYearly"), t("ps.team.perYear", money(team.price.yearly * 12))] : [t("ps.team.perSeatMonthly")],
       cta: <Button variant="outline" className="w-full" onClick={openEb}>{t("ps.team.cta")}</Button>,
       lines: [t("ps.team.f1"), t("ps.team.f2", n(team.credits.amount)), t("ps.trash", n(team.trashDays)), t("ps.team.f4", n(team.support.replyBusinessDays)), t("ps.team.f5", n(team.minSeats))],
@@ -91,35 +92,39 @@ export function PricingSection({ locale, heading = "h2" }: { locale: Locale; hea
           <ToggleGroupItem value="monthly" className={SEGMENT}>{t("ps.monthly")}</ToggleGroupItem>
         </ToggleGroup>
       </div>
-      <ul className="grid items-stretch gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {plans.map((p) => {
-          // Early bird stands out in black (PO, 7 Oct 2026).
-          const dark = p.id === "eb";
-          const sub = dark ? "text-inverted opacity-75" : "text-subtle";
-          return (
-          <li key={p.id} className={cn("flex min-w-0 flex-col gap-5 rounded-xl border border-default bg-default p-6", p.id === "team" && "border-[1.5px] border-[hsl(var(--ag-fg-default))] shadow-elevation-3", dark && "border-transparent bg-inverted text-inverted md:col-span-2 lg:col-span-1")}>
-            <div className="flex flex-col gap-1">
-              <div className="flex items-center gap-2">
-                <h3 className={cn("text-base font-semibold tracking-[-0.025em]", dark ? "text-inverted" : "text-emphasis")}>{p.name}</h3>
-                {p.badge && <span className={cn("inline-flex h-6 items-center rounded-full px-2 text-xs font-medium", p.id === "team" ? "bg-inverted text-inverted" : "bg-default text-emphasis")}>{p.badge}</span>}
+      <div className="flex flex-col gap-4">
+        <ul className="grid items-stretch gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {plans.map((p) => {
+            // Early bird stands out in black (PO, 7 Oct 2026).
+            const dark = p.id === "eb";
+            const sub = dark ? "text-inverted opacity-75" : "text-subtle";
+            return (
+            <li key={p.id} className={cn("flex min-w-0 flex-col gap-5 rounded-xl border border-default bg-default p-6", p.id === "team" && "border-[1.5px] border-[hsl(var(--ag-fg-default))] shadow-elevation-3", dark && "border-transparent bg-inverted text-inverted md:col-span-2 lg:col-span-1")}>
+              <div className="flex flex-col gap-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className={cn("text-base font-semibold tracking-[-0.025em]", dark ? "text-inverted" : "text-emphasis")}>{p.name}</h3>
+                  {p.badge && <span className={cn("inline-flex h-6 items-center rounded-full px-2 text-xs font-medium", p.id === "team" ? "bg-inverted text-inverted" : "bg-default text-emphasis")}>{p.badge}</span>}
+                  {"soon" in p && p.soon && <span className="inline-flex h-6 items-center rounded-full border border-dashed border-emphasis px-2.5 text-xs font-medium text-subtle">{t("pricing.soon")}</span>}
+                </div>
+                <p className={cn("text-[13px]", sub)}>{p.desc}</p>
               </div>
-              <p className={cn("text-[13px]", sub)}>{p.desc}</p>
-            </div>
-            <div>
-              <div className={cn("text-4xl font-bold tabular-nums tracking-[-0.05em]", dark ? "text-inverted" : "text-emphasis")}>{p.price}</div>
-              <div className={cn("min-h-9 text-[13px] leading-[18px] tabular-nums", sub)}>{p.note.map((line) => <div key={line}>{line}</div>)}</div>
-            </div>
-            {p.cta}
-            <ul className="flex flex-col gap-2.5 text-sm">
-              {p.lines.map((line) => (
-                <li key={line} className="flex gap-2.5"><Check aria-hidden className={cn("mt-0.5 size-4 shrink-0", dark ? "text-inverted" : "text-success-on-surface")} />{line}</li>
-              ))}
-            </ul>
-            {"footer" in p && p.footer}
-          </li>
-          );
-        })}
-      </ul>
+              <div>
+                <div className={cn("text-4xl font-bold tabular-nums tracking-[-0.05em]", dark ? "text-inverted" : "text-emphasis")}>{p.price}</div>
+                <div className={cn("min-h-9 text-[13px] leading-[18px] tabular-nums", sub)}>{p.note.map((line) => <div key={line}>{line}</div>)}</div>
+              </div>
+              {p.cta}
+              <ul className="flex flex-col gap-2.5 text-sm">
+                {p.lines.map((line) => (
+                  <li key={line} className="flex gap-2.5"><Check aria-hidden className={cn("mt-0.5 size-4 shrink-0", dark ? "text-inverted" : "text-success-on-surface")} />{line}</li>
+                ))}
+              </ul>
+              {"footer" in p && p.footer}
+            </li>
+            );
+          })}
+        </ul>
+        <p className="text-[13px] text-subtle">{t("ps.soonPlans")}</p>
+      </div>
       <Dialog open={ebOpen} onOpenChange={setEbOpen}>
         <DialogContent
           padded={false}
