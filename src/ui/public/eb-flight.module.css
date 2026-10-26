@@ -1,0 +1,55 @@
+/* The early bird dialog's illustration (FE-18, PO 9 Oct 2026): a pixel bird in a retro endless runner. The
+   clouds scroll left one tile and loop; the wings swap between two frames; the bird hops in whole pixels. Transform and opacity only (DS 7.0 G02), each SVG transform on a <g> with
+   transform-box: fill-box. With reduced motion nothing moves: one still frame, wings up. */
+
+.sky,
+.hop {
+  transform-box: fill-box;
+}
+
+.sky {
+  animation: scroll 9s linear infinite;
+}
+
+/* One tile (480 SVG units, TILE in eb-flight.tsx) lands on the start of the copy. */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-480px); }
+}
+
+.hop {
+  animation: hop 0.64s steps(2, jump-none) infinite alternate;
+}
+
+@keyframes hop {
+  from { transform: translateY(0); }
+  to { transform: translateY(-4px); }
+}
+
+.frameA {
+  animation: frame-a 0.32s step-end infinite;
+}
+
+.frameB {
+  opacity: 0;
+  animation: frame-b 0.32s step-end infinite;
+}
+
+@keyframes frame-a {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes frame-b {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sky,
+  .hop,
+  .frameA,
+  .frameB {
+    animation: none;
+  }
+}

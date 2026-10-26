@@ -1,0 +1,26 @@
+/* Motion for the hero Desk mock-up (FE-18 v2). Transform and opacity only (DS 7.0 G02); fill-mode "both" keeps
+   the first and last frame, so with reduced motion the scene lands on its finished state. */
+
+/* The pointer: comes in from the lower right, clicks the task, then fades away. */
+.cursor {
+  animation: cursor 1.8s var(--ag-ease-standard) both;
+}
+
+/* The task detail panel entering from the right edge. */
+.slide {
+  animation: slide var(--ag-duration-slower) var(--ag-ease-emphasized) both;
+}
+
+@keyframes cursor {
+  0% { opacity: 0; transform: translate(72px, 56px); }
+  15% { opacity: 1; }
+  60% { transform: none; }
+  68% { transform: scale(0.82); }
+  76% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: none; }
+}
+
+@keyframes slide {
+  from { opacity: 0; transform: translateX(48px); }
+  to { opacity: 1; transform: none; }
+}

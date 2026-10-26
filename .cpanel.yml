@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/rahayula/agereorg.com/
+    - /bin/cp -R * $DEPLOYPATH

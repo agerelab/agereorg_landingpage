@@ -1,0 +1,12 @@
+/* Motion for the AI Organization canvas (FE-18 v2). Opacity only, like the other scenes (DS 7.0 G02); fill-mode
+   "both" keeps the first and last frame, so reduced motion lands on the finished canvas. */
+
+/* A connector or a card's content appearing in place. */
+.fade {
+  animation: fade 0.45s var(--ag-ease-standard) both;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

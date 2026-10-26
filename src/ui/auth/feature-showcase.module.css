@@ -1,0 +1,93 @@
+/* Motion for the auth feature panel (D121). Transform and opacity only (DS 7.0 G02). Every scene
+   restarts when its slide mounts; fill-mode "both" holds the first and last frame, so the global
+   reduced-motion rule (globals.css) lands each scene on its finished state without movement. */
+
+.paused,
+.paused * {
+  animation-play-state: paused !important;
+}
+
+.rise {
+  animation: rise var(--ag-duration-slower) var(--ag-ease-emphasized) both;
+}
+
+.pop {
+  animation: pop var(--ag-duration-slower) var(--ag-ease-emphasized) both;
+}
+
+/* Fades in, then out: a transient state such as "Drafting…" or "Waiting". */
+.blip {
+  animation: blip 1.6s var(--ag-ease-standard) both;
+}
+
+.press {
+  animation: press 0.4s var(--ag-ease-standard) both;
+}
+
+.grow {
+  transform-origin: top;
+  animation: grow var(--ag-duration-slower) var(--ag-ease-emphasized) both;
+}
+
+/* The card dragged from "To do" to "In progress": its own width plus both column paddings and the gap
+   between the columns (24px). */
+.drag {
+  animation: drag 2.4s var(--ag-ease-emphasized) both;
+}
+
+.dot {
+  animation: dot 1s var(--ag-ease-standard) infinite;
+}
+
+/* A text line being written, left to right. */
+.write {
+  transform-origin: left;
+  animation: progress 0.8s var(--ag-ease-standard) both;
+}
+
+.progress {
+  transform-origin: left;
+  animation: progress linear both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes blip {
+  0% { opacity: 0; }
+  15%, 80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes press {
+  50% { transform: scale(0.94); }
+}
+
+@keyframes grow {
+  from { transform: scaleY(0); }
+  to { transform: none; }
+}
+
+@keyframes drag {
+  0%, 10% { transform: none; }
+  25% { transform: translateY(-4px) rotate(-1.5deg) scale(1.03); }
+  80% { transform: translateX(calc(100% + 24px)) translateY(-4px) rotate(-1.5deg) scale(1.03); }
+  100% { transform: translateX(calc(100% + 24px)); }
+}
+
+@keyframes dot {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes progress {
+  from { transform: scaleX(0); }
+  to { transform: none; }
+}
