@@ -74,7 +74,7 @@ describe("FE-18 — sending the decision", () => {
     const r = await sendDecisionAction({}, form({ t: sealApplicant(rina)!, d: "accept" }));
     expect(r).toEqual({ ok: true, email: "rina@majujaya.co.id" });
     const [m] = sent;
-    expect(m).toMatchObject({ to: "rina@majujaya.co.id", replyTo: "support@agereorg.com", bcc: "support@agereorg.com" });
+    expect(m).toMatchObject({ to: "rina@majujaya.co.id", replyTo: "support@agereorg.com", bcc: "agereorg@gmail.com" });
     expect(m.subject).toContain("early bird");
     for (const part of ["Halo Rina Kartika", "Maju Jaya", "30 menit", "Balas email ini dengan dua atau tiga waktu"]) expect(m.text, part).toContain(part);
     expect(m.html).toContain("agere-org-logo.png");
@@ -88,13 +88,14 @@ describe("FE-18 — sending the decision", () => {
     expect(sent[0].html).toContain('href="https://cal.example/agere/perkenalan"');
   });
 
-  it("declines politely: the places, Free and the trial at launch, and when the data is deleted", async () => {
+  it("declines politely: the places, the trial at launch, and the deletion rule without a date (D149, D151)", async () => {
     await sendDecisionAction({}, form({ t: sealApplicant(rina)!, d: "deny" }));
     const [m] = sent;
-    for (const part of ["Halo Rina Kartika", "Kuota program hanya 10 organisasi", "paket Free", "14 hari", "8 Apr 2027", "bagian 10 Kebijakan Privasi", "https://www.agereorg.example/privasi"]) {
+    for (const part of ["Halo Rina Kartika", "Kuota program hanya 10 organisasi", "14 hari", "90 hari setelah pendaftaran ditutup", "bagian 10 Kebijakan Privasi", "https://www.agereorg.example/privasi"]) {
       expect(m.text, part).toContain(part);
     }
-    expect(m.bcc).toBe("support@agereorg.com");
+    expect(m.text).not.toContain("Free");
+    expect(m.bcc).toBe("agereorg@gmail.com");
   });
 
   it("shows the team exactly the email that goes out, before it goes out", async () => {

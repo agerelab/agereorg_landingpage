@@ -5,19 +5,14 @@ import Link from "next/link";
 import { ProductLogo } from "@/brand";
 import type { Locale, MessageKey, translator } from "@/i18n";
 import { LanguageSwitcher } from "@/app/language-switcher";
-import { SHOW_PRICING, VISIBLE_LEGAL_DOCS } from "./content";
+import { VISIBLE_LEGAL_DOCS } from "./content";
 
 type T = ReturnType<typeof translator>;
 const link = "inline-flex min-h-7 items-center rounded-sm text-[13px] hover:underline focus-ring aria-[current=page]:font-medium";
 
 export function SiteFooter({ t, locale, current }: { t: T; locale: Locale; current: string }) {
-  const productLinks = [
-    { href: "/", text: t("public.nav.home") },
-    ...(SHOW_PRICING ? [{ href: "/harga", text: t("public.nav.pricing") }] : []),
-    { href: "/early-bird", text: t("site.nav.earlyBird") },
-  ];
   const groups: { label: MessageKey; links: { href: string; text: string }[] }[] = [
-    { label: "footer.product", links: productLinks },
+    { label: "footer.product", links: [{ href: "/", text: t("public.nav.home") }, { href: "/harga", text: t("public.nav.pricing") }, { href: "/early-bird", text: t("site.nav.earlyBird") }] },
     { label: "footer.help", links: [{ href: "/#faq", text: t("footer.faq") }] },
     { label: "footer.legal", links: VISIBLE_LEGAL_DOCS.map((d) => ({ href: d.slug === "early-bird" ? "/early-bird#syarat" : `/${d.slug}`, text: t(d.title) })) },
   ];

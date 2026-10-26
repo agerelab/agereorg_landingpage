@@ -2,14 +2,14 @@
 title: Kebijakan Privasi agere/org
 doc: privacy
 lang: id
-version: "1.0"
-effective_date: 2026-10-16
+version: "1.1"
+effective_date: "[tanggal terbit, sebelum R2]"
 authoritative: true
 ---
 
 # Kebijakan Privasi agere/org
 
-Versi 1.0 · berlaku sejak 16 Oktober 2026
+Versi 1.1 · berlaku sejak [tanggal terbit, sebelum R2]
 
 ## 1. Tentang kebijakan ini
 
@@ -117,7 +117,7 @@ Kami hanya memakai cookie dan penyimpanan peramban yang diperlukan agar Layanan 
 | Invoice, pembayaran, dan profil penagihan | 10 tahun, sesuai kewajiban penyimpanan dokumen keuangan yang berlaku. Tetap disimpan meski Organisasi dihapus, terbatas pada identitas penagihan dan jumlah | Dihapus |
 | Korespondensi dukungan | Selama diperlukan untuk menangani permintaan, paling lama 2 tahun | Dihapus |
 | Cadangan basis data | Paling lama 30 hari | Data yang sudah dihapus ikut hilang saat cadangan lama berganti |
-| Pendaftaran early bird yang tidak terpilih | 90 hari setelah pendaftaran ditutup | Dihapus |
+| Pendaftaran early bird yang tidak terpilih | 90 hari setelah program early bird ditutup karena kuota terisi, atau lebih awal atas permintaan | Dihapus |
 | Catatan umpan balik | Paling lama 2 tahun | Dihapus |
 
 Catatan aplikasi (*log*) hanya berisi ID teknis, tanpa nama, email, atau kata sandi.

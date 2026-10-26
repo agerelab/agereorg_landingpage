@@ -3,7 +3,7 @@
 import type { MessageKey } from "@/i18n";
 
 /** Team inbox that receives applications (PO, 7 Oct 2026); the environment may point elsewhere. */
-export const EARLY_BIRD_INBOX = process.env.EARLY_BIRD_INBOX || "support@agereorg.com";
+export const EARLY_BIRD_INBOX = process.env.EARLY_BIRD_INBOX || "agereorg@gmail.com";
 
 /** Where applicants' replies go: the one address the legal documents use (D134). */
 export const SUPPORT_EMAIL = "support@agereorg.com";

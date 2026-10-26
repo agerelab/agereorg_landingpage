@@ -6,8 +6,8 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import type { Locale, translator } from "@/i18n";
-import { formatIsoDate, formatNumber } from "@/i18n/format";
-import { EARLY_BIRD, PLANS, TRIAL_DAYS } from "@/modules/billing/plans";
+import { formatNumber } from "@/i18n/format";
+import { EARLY_BIRD, TRIAL_DAYS } from "@/modules/billing/plans";
 import { loadFaq } from "@/ui/legal/content";
 import { PROBLEMS } from "./content";
 
@@ -35,7 +35,7 @@ export function Hero({ t, mock }: { t: T; mock?: React.ReactNode }) {
               <Link href="#masalah">{t("hero.ctaHow")}</Link>
             </Button>
           </div>
-          <p className="text-[13px] leading-[18px] text-subtle">{t("hero.meta", String(PLANS.free.maxSeats), String(TRIAL_DAYS))}</p>
+          <p className="text-[13px] leading-[18px] text-subtle">{t("hero.meta", String(TRIAL_DAYS))}</p>
         </div>
         {mock}
       </div>
@@ -73,7 +73,7 @@ export function EarlyBirdTeaser({ t, locale }: { t: T; locale: Locale }) {
     [String(E.places), t("ebt.stat.places")],
   ];
   const steps = [
-    [t("ebt.s1.when", formatIsoDate(locale, E.closesOn)), t("ebt.s1.body")],
+    [t("ebt.s1.when"), t("ebt.s1.body")],
     [t("ebt.s2.when"), t("ebt.s2.body")],
     [t("ebt.s3.when", String(E.freeDays)), t("ebt.s3.body")],
   ];

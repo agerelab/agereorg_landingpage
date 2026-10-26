@@ -2,8 +2,8 @@
 title: Pertanyaan umum
 doc: faq
 lang: id
-version: "1.0"
-effective_date: 2026-10-16
+version: "1.1"
+effective_date: 2026-10-19
 authoritative: true
 ---
 
@@ -15,15 +15,15 @@ Ruang kerja untuk tim kecil: space, proyek, dan tugas dalam papan atau daftar, D
 
 ## Apa itu program early bird?
 
-Program untuk 10 Organisasi pertama dengan 3 sampai 15 orang. Peserta memakai semua fitur paket Tim gratis selama 90 hari dan ikut membentuk arah produk lewat sesi umpan balik.
+Program untuk 10 Organisasi pertama dengan 3 sampai 15 orang. Peserta memakai semua fitur paket Tim gratis selama 60 hari dan ikut membentuk arah produk lewat sesi umpan balik.
 
 ## Bagaimana cara ikut?
 
-Daftar lewat formulir di halaman ini. Kami mengundang pendaftar yang sesuai ke panggilan perkenalan 30 menit, lalu mengirim hasilnya lewat email. Pendaftaran ditutup 8 Januari 2027 atau lebih awal bila kuota terisi.
+Gabung daftar tunggu lewat formulir di halaman ini. Program dibuka saat agere/org siap dipakai; saat itu kami mengundang pendaftar yang sesuai ke panggilan perkenalan 30 menit, lalu mengirim hasilnya lewat email. Tidak ada tanggal tutup, dan pendaftar di daftar tunggu kami hubungi lebih dulu.
 
 ## Kapan saya bisa mulai memakai agere/org?
 
-Peserta diaktifkan antara 19 Januari dan 2 Februari 2027. Masa 90 hari dihitung sejak tanggal aktivasi.
+Segera setelah agere/org siap melayani tim; kami mengabari semua pendaftar daftar tunggu lewat email. Masa 60 hari dihitung sejak tanggal aktivasi.
 
 ## Apakah saya perlu kartu atau metode pembayaran?
 
@@ -37,9 +37,9 @@ Satuan pemakaian fitur AI. Peserta early bird mendapat 100 kredit per Anggota ak
 
 Hanya fitur AI yang berhenti sampai jatah berikutnya. Space, proyek, tugas, dan semua fitur lain tetap berjalan.
 
-## Apa yang terjadi setelah 90 hari?
+## Apa yang terjadi setelah 60 hari?
 
-Anda memilih. Lanjut ke paket Tim, dan harga per Kursi Anda dikunci 12 bulan bila membayar paling lambat 7 hari setelah masa early bird berakhir. Atau tidak lanjut, dan Organisasi pindah ke paket Free. Tidak ada data yang dihapus.
+Anda memilih. Lanjut ke paket Tim, dan harga per Kursi Anda dikunci 12 bulan bila membayar paling lambat 7 hari setelah masa early bird berakhir. Atau tidak lanjut, dan Organisasi menjadi hanya-baca: semua data tetap bisa dibuka dan diekspor, dan pulih utuh saat Anda berlangganan. Tidak ada data yang dihapus.
 
 ## Apakah data kami dipakai untuk melatih AI?
 

@@ -1,31 +1,42 @@
-// What the public home and pricing pages say (FE-18). The comparison shows what ships at GA
-// (PRD-00 §0) and, marked "coming soon", the apps that follow (PO, 7 Oct 2026), so nothing reads as
-// available before it is.
+// What the public home and pricing pages say (FE-18). The comparison shows what the Tim plan, and so the
+// 14-day trial, holds at the first release (PRD-00 §0, D149) and, marked "coming soon", the apps that follow
+// (PO, 7 Oct 2026), so nothing reads as available before it is.
 import type { MessageKey } from "@/i18n";
-import { PLANS } from "@/modules/billing/plans";
+import { PLANS, TEAM_EXTRAS, UPCOMING_PLANS } from "@/modules/billing/plans";
 import { LEGAL_DOCS } from "@/ui/legal/docs";
 
 export type Cell = { key: MessageKey; arg?: number };
-export type PricingRow = { id: string; label: MessageKey; free: Cell; team: Cell; soon?: true };
+export type PricingRow = { id: string; label: MessageKey; team: Cell; business: Cell; soon?: true };
 
 const later = (n: number | null, some: MessageKey, none: MessageKey = "pricing.v.none"): Cell => (n === null ? { key: "pricing.v.unlimited" } : n === 0 ? { key: none } : { key: some, arg: n });
-const L = { free: PLANS.free.later, team: PLANS.team.later };
+const yes = (on: boolean): Cell => ({ key: on ? "pricing.v.included" : "pricing.v.none" });
+const T = { ...PLANS.team, ...TEAM_EXTRAS };
+const B = UPCOMING_PLANS.business;
 
+/** Tim, which the 14-day trial holds too (D149), next to Bisnis, which follows (D109). Only what a buyer can
+ *  read without our internal names (PO, 19 Oct 2026): no undecided items, no rollout phases. */
 export const PRICING_ROWS: PricingRow[] = [
-  { id: "seats", label: "pricing.row.seats", free: { key: "pricing.v.seatsMax", arg: PLANS.free.maxSeats }, team: { key: "pricing.v.seatsMin", arg: PLANS.team.minSeats } },
-  { id: "projects", label: "pricing.row.projects", free: { key: "pricing.v.count", arg: PLANS.free.activeProjects }, team: { key: "pricing.v.unlimited" } },
-  { id: "credits", label: "pricing.row.credits", free: { key: "pricing.v.perWorkspace", arg: PLANS.free.credits.amount }, team: { key: "pricing.v.perSeat", arg: PLANS.team.credits.amount } },
-  { id: "trash", label: "pricing.row.trash", free: { key: "pricing.v.days", arg: PLANS.free.trashDays }, team: { key: "pricing.v.days", arg: PLANS.team.trashDays } },
-  { id: "insights", label: "pricing.row.insights", free: { key: "pricing.v.namesRoles" }, team: { key: "pricing.v.perProject" } },
-  { id: "restricted", label: "pricing.row.restricted", free: { key: "pricing.v.included" }, team: { key: "pricing.v.included" } },
-  { id: "audit", label: "pricing.row.audit", free: { key: PLANS.free.auditTrail ? "pricing.v.included" : "pricing.v.none" }, team: { key: PLANS.team.auditTrail ? "pricing.v.included" : "pricing.v.none" } },
-  { id: "support", label: "pricing.row.support", free: { key: "pricing.v.email" }, team: { key: "pricing.v.emailDays", arg: PLANS.team.support.replyBusinessDays } },
-  { id: "agents", label: "pricing.row.agents", free: later(L.free.customAgents, "pricing.v.count"), team: later(L.team.customAgents, "pricing.v.count"), soon: true },
-  { id: "triggers", label: "pricing.row.triggers", free: later(L.free.agentTriggers, "pricing.v.count"), team: later(L.team.agentTriggers, "pricing.v.count"), soon: true },
-  { id: "aiTeams", label: "pricing.row.aiTeams", free: later(L.free.aiTeams, "pricing.v.teams"), team: later(L.team.aiTeams, "pricing.v.teams"), soon: true },
-  { id: "apps", label: "pricing.row.apps", free: later(L.free.appConnections, "pricing.v.connections"), team: { key: "pricing.v.allApps" }, soon: true },
-  { id: "chat", label: "pricing.row.chat", free: later(L.free.chatHistoryDays, "pricing.v.days"), team: later(L.team.chatHistoryDays, "pricing.v.days"), soon: true },
-  { id: "timeline", label: "pricing.row.timeline", free: { key: L.free.timeline ? "pricing.v.included" : "pricing.v.none" }, team: { key: L.team.timeline ? "pricing.v.included" : "pricing.v.none" }, soon: true },
+  { id: "workspace", label: "pricing.row.workspace", team: yes(true), business: yes(true) },
+  { id: "seats", label: "pricing.row.seats", team: { key: "pricing.v.seatsMin", arg: T.minSeats }, business: { key: "pricing.v.seatsMin", arg: B.minSeats } },
+  { id: "projects", label: "pricing.row.projects", team: { key: "pricing.v.unlimited" }, business: { key: "pricing.v.unlimited" } },
+  { id: "credits", label: "pricing.row.credits", team: { key: "pricing.v.perSeat", arg: T.credits.amount }, business: { key: "pricing.v.perSeat", arg: B.credits.amount } },
+  { id: "goals", label: "pricing.row.goals", team: yes(true), business: yes(true) },
+  { id: "memberCap", label: "pricing.row.memberCap", team: yes(T.memberCreditCap), business: yes(B.memberCreditCap) },
+  { id: "storage", label: "pricing.row.storage", team: { key: "pricing.v.gbPerSeat", arg: T.storageGbPerSeat }, business: { key: "pricing.v.gbPerSeat", arg: B.storageGbPerSeat } },
+  { id: "trash", label: "pricing.row.trash", team: { key: "pricing.v.days", arg: T.trashDays }, business: { key: "pricing.v.days", arg: B.trashDays } },
+  { id: "insights", label: "pricing.row.insights", team: { key: "pricing.v.perProject" }, business: { key: "pricing.v.fullInsights" } },
+  { id: "restricted", label: "pricing.row.restricted", team: yes(true), business: yes(true) },
+  { id: "privateProject", label: "pricing.row.privateProject", team: yes(T.restrictedProject), business: yes(B.restrictedProject) },
+  { id: "audit", label: "pricing.row.audit", team: yes(T.auditTrail), business: yes(true) },
+  { id: "auditViewer", label: "pricing.row.auditViewer", team: yes(false), business: { key: "pricing.v.lastDays", arg: B.auditViewerDays } },
+  { id: "support", label: "pricing.row.support", team: { key: "pricing.v.emailDays", arg: T.support.replyBusinessDays }, business: { key: "pricing.v.priorityHours", arg: B.support.replyHours } },
+  { id: "deepMode", label: "pricing.row.deepMode", team: yes(T.deepMode), business: yes(B.deepMode), soon: true },
+  { id: "agents", label: "pricing.row.agents", team: later(T.later.customAgents, "pricing.v.count"), business: later(B.later.customAgents, "pricing.v.count"), soon: true },
+  { id: "triggers", label: "pricing.row.triggers", team: later(T.later.agentTriggers, "pricing.v.count"), business: later(B.later.agentTriggers, "pricing.v.count"), soon: true },
+  { id: "aiTeams", label: "pricing.row.aiTeams", team: later(T.later.aiTeams, "pricing.v.teams"), business: later(B.later.aiTeams, "pricing.v.teams"), soon: true },
+  { id: "apps", label: "pricing.row.apps", team: { key: "pricing.v.appsCore" }, business: { key: "pricing.v.appsAdvanced" }, soon: true },
+  { id: "chat", label: "pricing.row.chat", team: later(T.later.chatHistoryDays, "pricing.v.days"), business: later(B.later.chatHistoryDays, "pricing.v.days"), soon: true },
+  { id: "timeline", label: "pricing.row.timeline", team: yes(T.later.timeline), business: yes(B.later.timeline), soon: true },
 ];
 
 /** Fictional people in the mock-ups; photos generated for the PO (FE-18 v2), names are not translated. */
@@ -44,7 +55,7 @@ export const MOCK_KEYS: MessageKey[] = [
 export const SOON_APPS: MessageKey[] = ["ps.soon.doc", "ps.soon.chat", "ps.soon.apps", "ps.soon.agents", "ps.soon.skills", "ps.soon.aiOrg", "ps.soon.timeline"];
 
 export const PRICING_SECTION_KEYS: MessageKey[] = [
-  "ps.eyebrow", "ps.title", "ps.lead", "ps.cycle", "ps.yearly", "ps.save", "ps.monthly", "ps.free.name", "ps.free.desc", "ps.free.note", "ps.free.cta", "ps.free.ctaNote", "ps.free.f1", "ps.free.f2", "ps.free.f4", "ps.free.f6", "ps.credits.org", "ps.trash", "ps.team.name", "ps.team.badge", "ps.team.desc", "ps.team.perSeatYearly", "ps.team.perYear", "ps.team.perSeatMonthly", "ps.team.cta", "ps.team.f1", "ps.team.f2", "ps.team.f4", "ps.team.f5", "ps.eb.name", "ps.eb.badge", "ps.eb.desc", "ps.eb.note1", "ps.eb.note2", "ps.eb.cta", "ps.eb.credits", "ps.eb.f2", "ps.eb.f3", "ps.eb.f4", "ps.trial.title", "ps.trial.body", "ps.soon.title", "ps.soon.body", "ps.soon.doc", "ps.soon.chat", "ps.soon.apps", "ps.soon.agents", "ps.soon.skills", "ps.soon.aiOrg", "ps.soon.timeline",
+  "ps.eyebrow", "ps.title", "ps.lead", "ps.cycle", "ps.yearly", "ps.save", "ps.monthly", "ps.trial.name", "ps.trial.desc", "ps.trial.note1", "ps.trial.note2", "ps.trial.cta", "ps.trial.f1", "ps.trial.f2", "ps.trial.f3", "ps.trial.f4", "ps.trial.f5", "ps.trash", "ps.team.name", "ps.team.badge", "ps.team.desc", "ps.team.perSeatYearly", "ps.team.perYear", "ps.team.perSeatMonthly", "ps.team.cta", "ps.team.f1", "ps.team.f2", "ps.team.f4", "ps.team.f5", "ps.eb.name", "ps.eb.badge", "ps.eb.desc", "ps.eb.note1", "ps.eb.note2", "ps.eb.cta", "ps.eb.credits", "ps.eb.f2", "ps.eb.f3", "ps.eb.f4", "ps.after.title", "ps.after.body", "ps.soon.title", "ps.soon.body", "ps.soon.doc", "ps.soon.chat", "ps.soon.apps", "ps.soon.agents", "ps.soon.skills", "ps.soon.aiOrg", "ps.soon.timeline",
 ];
 
 /** The pixel bird at the top of the early bird dialog: hidden for now (PO, 9 Oct 2026). */
@@ -68,9 +79,6 @@ export const FEATURE_KEYS: MessageKey[] = [
 /** "Sign in" in the public header; hidden until the app opens, the early bird is the way in (PO, 9 Oct 2026). */
 export const SHOW_SIGN_IN = false;
 
-/** Pricing section and page: hidden for early bird / pre-launch phase. */
-export const SHOW_PRICING = false;
-
 /** Header links of the public site; a section joins when it ships, so no link points at nothing. */
 export const SITE_NAV: { href: string; key: MessageKey }[] = [
   { href: "/#produktivitas", key: "f.prod.eyebrow" },
@@ -90,7 +98,7 @@ export const PUBLIC_KEYS: MessageKey[] = [
   "site.home", "site.nav.label", "site.nav.mobile", "site.nav.earlyBird", "site.menu.open", "site.menu.close", "site.cta.earlyBird",
   "hero.pill", "hero.title", "hero.lead", "hero.ctaHow", "hero.meta", "problem.eyebrow", "problem.title",
   ...PROBLEMS.flatMap((p) => [p.title, p.body]),
-  "pricing.title", "pricing.lead", "pricing.compare", "pricing.feature", "pricing.free.name", "pricing.team.name",
-  "pricing.soon", "pricing.soonNote", "pricing.v.none",
-  ...PRICING_ROWS.flatMap((r) => [r.label, r.free.key, r.team.key]),
+  "pricing.title", "pricing.lead", "pricing.compare", "pricing.compareLead", "pricing.feature", "pricing.team.name",
+  "pricing.business.name", "pricing.perSeatYearly", "pricing.businessNote", "pricing.soon", "pricing.soonNote", "pricing.v.none",
+  ...PRICING_ROWS.flatMap((r) => [r.label, r.team.key, r.business.key]),
 ];
