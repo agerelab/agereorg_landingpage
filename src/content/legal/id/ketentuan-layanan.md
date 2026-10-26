@@ -2,14 +2,14 @@
 title: Ketentuan Layanan agere/org
 doc: terms
 lang: id
-version: "1.1"
-effective_date: "[tanggal terbit, sebelum R2]"
+version: "1.0"
+effective_date: 2026-10-16
 authoritative: true
 ---
 
 # Ketentuan Layanan agere/org
 
-Versi 1.1 · berlaku sejak [tanggal terbit, sebelum R2]
+Versi 1.0 · berlaku sejak 16 Oktober 2026
 
 ## Pasal 1. Para pihak dan persetujuan
 
@@ -32,7 +32,6 @@ Versi 1.1 · berlaku sejak [tanggal terbit, sebelum R2]
 | Kredit AI | Satuan pemakaian fitur AI. Kredit AI tidak bernilai uang dan tidak dapat ditukar dengan uang |
 | Usulan AI | Hasil fitur AI berupa usulan yang baru berlaku setelah disetujui pengguna |
 | Periode tagihan | Satu bulan untuk siklus bulanan atau dua belas bulan untuk siklus tahunan |
-| Kedaluwarsa | Status Organisasi yang belum atau tidak lagi membayar: semua data dapat dibuka, dicari, dan diekspor, tetapi tidak ada yang dapat dibuat atau diubah (Pasal 6.6) |
 
 ## Pasal 3. Akun dan Organisasi
 
@@ -46,36 +45,35 @@ Versi 1.1 · berlaku sejak [tanggal terbit, sebelum R2]
 
 | Paket | Harga | Kursi | Batas utama | Kredit AI per bulan |
 |---|---|---|---|---|
+| Free | Rp0 | Maks. 5 Anggota aktif | 5 proyek aktif | 50 per Organisasi |
 | Tim, tahunan | Rp59.000 per Kursi per bulan, dibayar di muka Rp708.000 per Kursi per tahun | Min. 3 | Anggota dan proyek tidak dibatasi | 100 per Kursi |
 | Tim, bulanan | Rp69.000 per Kursi per bulan | Min. 3 | Anggota dan proyek tidak dibatasi | 100 per Kursi |
 
-1. Harga dalam rupiah dan merupakan jumlah yang Anda bayar. Tidak ada paket gratis; setiap Organisasi baru memulai dengan trial menurut Pasal 5.
+1. Harga dalam rupiah dan merupakan jumlah yang Anda bayar.
 2. Rincian fitur tiap paket ada di halaman harga www.agereorg.com/harga. Fitur yang ditandai "Menyusul" atau hanya tampil sebagai ilustrasi belum tersedia dan bukan bagian dari yang Anda bayar.
 3. Kami dapat mengubah harga atau isi paket dengan pemberitahuan paling lambat 30 hari sebelumnya. Perubahan berlaku mulai perpanjangan berikutnya, kecuali harga yang dikunci untuk Anda.
 
 ## Pasal 5. Masa coba (trial)
 
 1. Setiap Organisasi baru mendapat trial 14 hari dengan semua fitur paket Tim, tanpa kartu pembayaran.
-2. Kredit AI trial: 500 kredit bila pembuat Organisasi memakai email domain sendiri yang terverifikasi, 150 kredit bila memakai layanan email gratis. [Q-D149-1] Pendaftaran akun dengan alamat email sekali pakai tidak dapat dilakukan.
-3. Trial diberikan satu kali per domain email terverifikasi dan satu kali per akun pembuat. Organisasi berikutnya yang tidak mendapat trial dapat dipakai setelah berlangganan paket Tim.
-4. Atas pertimbangan kami, trial dapat diperpanjang satu kali selama 16 hari, sehingga totalnya 30 hari, bagi Organisasi dengan paling sedikit 3 Anggota aktif dan 1 proyek.
-5. Kami mengingatkan Owner dan Admin 4 hari dan 1 hari sebelum trial berakhir. Bila trial berakhir tanpa pembayaran, Organisasi menjadi Kedaluwarsa menurut Pasal 6.6. Kredit trial yang tersisa berakhir bersama trial.
+2. Kredit AI trial: 500 kredit bila pembuat Organisasi memakai email domain sendiri yang terverifikasi, 150 kredit bila memakai layanan email gratis. Pendaftaran dengan alamat email sekali pakai tidak mendapat trial.
+3. Trial diberikan satu kali per domain email terverifikasi dan satu kali per akun pembuat.
+4. Atas pertimbangan kami, trial dapat diperpanjang satu kali selama 14 hari bagi Organisasi dengan paling sedikit 3 Anggota aktif dan 1 proyek.
+5. Kami mengingatkan Owner dan Admin pada hari ke-10 dan ke-13. Bila trial berakhir tanpa pembayaran, Organisasi pindah ke paket Free menurut Pasal 6.6. Kredit trial yang tersisa berakhir bersama trial.
 
 ## Pasal 6. Pembayaran, Kursi, perpanjangan, dan pembatalan
 
 1. **Pembayaran.** Hanya Owner dan Admin yang dapat memilih paket dan membayar. Pembayaran diproses oleh penyedia jasa pembayaran mitra kami melalui metode yang tersedia di halaman pembayaran, misalnya QRIS, virtual account, dan kartu. Kami tidak menyimpan data kartu Anda.
 2. **Kursi.** Jumlah Kursi yang ditagih adalah jumlah Anggota aktif saat pembayaran, minimal 3. Jumlah ini dihitung ulang pada setiap perpanjangan. Anggota yang bertambah atau berkurang di tengah Periode tagihan tidak mengubah tagihan berjalan dan tidak menimbulkan tagihan atau pengembalian prorata.
 3. **Perpanjangan.** Kami tidak mendebit otomatis. Invoice perpanjangan terbit 7 hari sebelum Periode tagihan berakhir dan jatuh tempo pada hari terakhirnya. Pengingat dikirim 7 hari dan 3 hari sebelumnya, serta pada hari jatuh tempo.
-4. **Terlambat bayar.** Setelah jatuh tempo, Anda mendapat masa tenggang 7 hari dengan semua fitur tetap aktif. Bila invoice belum dibayar setelah masa tenggang, Organisasi menjadi Kedaluwarsa menurut Pasal 6.6.
-5. **Pindah siklus.** Pindah antara siklus bulanan dan tahunan berlaku pada perpanjangan berikutnya, tanpa prorata. Berlangganan paket Tim dari trial atau dari status Kedaluwarsa berlaku setelah pembayaran diterima.
-6. **Kedaluwarsa.** Organisasi menjadi Kedaluwarsa bila trial berakhir tanpa pembayaran, bila invoice belum dibayar setelah masa tenggang, bila langganan yang dibatalkan mencapai akhir Periode tagihannya, atau bila masa early bird berakhir tanpa pembayaran. Selama Kedaluwarsa:
-    - tidak ada data yang dihapus, tidak ada anggota yang dijeda, dan tidak ada akses yang menjadi lebih luas;
-    - semua anggota tetap dapat masuk, membuka, mencari, dan mengekspor data Organisasi;
-    - tidak ada yang dapat dibuat atau diubah, dan fitur AI berhenti; Kredit AI paket tidak diberikan;
-    - [Q-D149-3] Owner dan Admin tetap dapat membayar paket Tim kapan saja, mengeluarkan anggota, dan meminta penghapusan Organisasi menurut Pasal 13.1, tetapi tidak dapat mengundang anggota baru;
-    - semuanya pulih seperti semula setelah pembayaran diterima;
-    - [Q-D149-2] Organisasi yang Kedaluwarsa selama 12 bulan dihapus permanen. Kami memberi tahu Owner dan Admin lewat email 30 hari dan 7 hari sebelumnya, dan Owner dapat mengekspor data sampai saat itu.
-7. **Pembatalan.** Owner atau Admin dapat membatalkan langganan di Kelola › Langganan. Pembatalan berlaku pada akhir Periode tagihan berjalan, dan Layanan tetap aktif sampai saat itu; setelahnya Organisasi menjadi Kedaluwarsa menurut Pasal 6.6. Sebelum periode berakhir, pembatalan dapat ditarik kembali. Pengembalian dana diatur dalam Kebijakan Pengembalian Dana.
+4. **Terlambat bayar.** Setelah jatuh tempo, Anda mendapat masa tenggang 7 hari dengan semua fitur tetap aktif. Bila invoice belum dibayar setelah masa tenggang, Organisasi pindah ke paket Free menurut Pasal 6.6.
+5. **Pindah siklus.** Pindah antara siklus bulanan dan tahunan berlaku pada perpanjangan berikutnya, tanpa prorata. Naik dari Free ke Tim berlaku setelah pembayaran diterima.
+6. **Pindah ke Free.** Pindah paket tidak pernah menghapus data dan tidak pernah membuka akses lebih luas. Bila Organisasi melebihi batas paket Free:
+    - Anggota aktif di atas 5 dijeda. Urutan yang dipertahankan: Owner, lalu Admin, lalu anggota dengan aktivitas terbaru. Owner dan Admin dapat mengubah pilihan ini kapan saja.
+    - Organisasi dengan 6 Anggota aktif atau lebih mendapat tenggang 7 hari setelah trial berakhir sebelum anggota dijeda.
+    - Proyek aktif di atas 5 menjadi hanya-baca. Lima proyek yang paling baru diubah tetap bisa diedit.
+    - Semua yang dijeda atau hanya-baca pulih saat Organisasi kembali ke paket Tim.
+7. **Pembatalan.** Owner atau Admin dapat membatalkan langganan di Kelola › Langganan. Pembatalan berlaku pada akhir Periode tagihan berjalan, dan Layanan tetap aktif sampai saat itu. Sebelum periode berakhir, pembatalan dapat ditarik kembali. Pengembalian dana diatur dalam Kebijakan Pengembalian Dana.
 8. **Invoice.** Invoice memakai nama legal dan alamat di Profil penagihan Organisasi. Pastikan data ini benar sebelum membayar.
 
 ## Pasal 7. Kredit AI
@@ -83,7 +81,7 @@ Versi 1.1 · berlaku sejak [tanggal terbit, sebelum R2]
 1. Kredit AI paket diberikan setiap tanggal 1 pukul 00.00 WIB dan tidak terbawa ke bulan berikutnya. Pada bulan pertama, jatah dihitung sebanding dengan sisa hari di bulan itu.
 2. Kredit AI dipakai bersama oleh seluruh anggota Organisasi. Jumlah kredit untuk satu pemakaian dihitung dari biaya model yang benar-benar terpakai, minimal 1 kredit. Sisa kredit tampil di meter kredit.
 3. Bila Kredit AI habis, hanya fitur AI yang berhenti sampai jatah berikutnya. Semua fitur lain tetap berjalan. Pemakaian AI yang sedang berjalan boleh selesai, dan kelebihannya dipotong dari jatah berikutnya.
-4. Kredit AI tidak bernilai uang, tidak dapat dipindahkan ke Organisasi lain, tidak dapat ditukar dengan uang, dan berakhir bila Organisasi ditutup. Kredit yang dibeli tidak dapat dipakai selama Organisasi Kedaluwarsa, tetapi masa berlakunya tetap berjalan.
+4. Kredit AI tidak bernilai uang, tidak dapat dipindahkan ke Organisasi lain, tidak dapat ditukar dengan uang, dan berakhir bila Organisasi ditutup.
 5. Kami dapat sementara waktu tidak memotong Kredit AI untuk fitur tertentu. Hal itu tidak menjadi hak permanen.
 6. Bila pembelian Kredit AI tambahan tersedia, kredit yang dibeli berlaku 12 bulan sejak pembelian dan dipakai setelah jatah paket bulan berjalan habis.
 
@@ -131,9 +129,9 @@ Anda dan anggota Organisasi Anda dilarang:
 
 ## Pasal 12. Ketersediaan dan dukungan
 
-1. Kami berupaya agar Layanan tersedia setiap saat, tetapi tidak menjamin Layanan bebas gangguan. Trial, masa early bird, dan paket Tim tidak memiliki jaminan tingkat layanan (SLA).
+1. Kami berupaya agar Layanan tersedia setiap saat, tetapi tidak menjamin Layanan bebas gangguan. Paket Free dan Tim tidak memiliki jaminan tingkat layanan (SLA).
 2. Pemeliharaan yang berdampak pada Anda kami umumkan lebih dahulu bila memungkinkan.
-3. Dukungan tersedia lewat support@agereorg.com. Paket Tim, trial, dan peserta early bird dijawab paling lambat 2 hari kerja. Organisasi yang Kedaluwarsa dijawab sebisa kami, kecuali pertanyaan tentang pembayaran, ekspor, dan penghapusan data, yang dijawab paling lambat 2 hari kerja.
+3. Dukungan tersedia lewat support@agereorg.com. Paket Tim dijawab paling lambat 2 hari kerja. Paket Free dijawab sebisa kami.
 4. Kami dapat menambah, mengubah, atau menghentikan fitur. Bila kami menghapus fungsi utama paket berbayar, kami memberi tahu paling lambat 30 hari sebelumnya, dan Anda dapat berhenti dengan pengembalian dana untuk sisa periode yang belum terpakai.
 5. Kami mencadangkan data secara berkala, tetapi tetap simpan salinan sendiri untuk informasi yang sangat penting bagi bisnis Anda.
 
@@ -143,10 +141,9 @@ Anda dan anggota Organisasi Anda dilarang:
     - membatalkan langganan menurut Pasal 6.7;
     - menghapus akun di Pengaturan setelah keluar dari semua Organisasi; bila Anda satu-satunya Owner sebuah Organisasi, hubungi support@agereorg.com untuk menyerahkan kepemilikan lebih dulu;
     - meminta penghapusan Organisasi melalui support@agereorg.com. Organisasi masuk masa tunggu 30 hari, lalu datanya dihapus permanen paling lambat 7 hari setelahnya.
-2. **Oleh kami.** Kami dapat menangguhkan atau menghentikan akses bila terjadi pelanggaran Pasal 11, perintah hukum, atau risiko keamanan yang nyata. Tagihan yang tidak dibayar setelah masa tenggang tidak menghentikan akses, tetapi membuat Organisasi Kedaluwarsa menurut Pasal 6.6. Kami memberi tahu lebih dahulu kecuali keadaan mendesak atau dilarang hukum.
+2. **Oleh kami.** Kami dapat menangguhkan atau menghentikan akses bila terjadi pelanggaran Pasal 11, tagihan yang tidak dibayar setelah masa tenggang, perintah hukum, atau risiko keamanan yang nyata. Kami memberi tahu lebih dahulu kecuali keadaan mendesak atau dilarang hukum.
 3. Setelah penghentian oleh kami, Owner dapat meminta salinan Konten Pelanggan dalam 30 hari, kecuali dilarang hukum.
 4. Bila kami menghentikan Layanan seluruhnya, kami memberi tahu paling lambat 60 hari sebelumnya, mengembalikan dana untuk sisa periode yang belum terpakai, dan memberi kesempatan mengambil salinan data.
-5. Organisasi yang Kedaluwarsa selama 12 bulan dihapus menurut Pasal 6.6. Penghapusan ini bukan penghentian oleh kami karena pelanggaran.
 
 ## Pasal 14. Jaminan
 
@@ -155,7 +152,7 @@ Layanan disediakan sebagaimana adanya. Sejauh diizinkan hukum, kami tidak member
 ## Pasal 15. Batas tanggung jawab
 
 1. Sejauh diizinkan hukum, kami tidak bertanggung jawab atas kerugian tidak langsung, seperti kehilangan keuntungan, pendapatan, atau peluang usaha.
-2. Sejauh diizinkan hukum, total tanggung jawab kami atas semua klaim terkait Layanan dalam satu Organisasi dibatasi sebesar jumlah yang dibayar Pelanggan kepada kami dalam 12 bulan sebelum kejadian yang menimbulkan klaim. Untuk Organisasi yang belum pernah membayar, termasuk selama trial dan masa early bird, batasnya Rp1.000.000.
+2. Sejauh diizinkan hukum, total tanggung jawab kami atas semua klaim terkait Layanan dalam satu Organisasi dibatasi sebesar jumlah yang dibayar Pelanggan kepada kami dalam 12 bulan sebelum kejadian yang menimbulkan klaim. Untuk paket Free, batasnya Rp1.000.000.
 3. Batas di atas tidak berlaku untuk kerugian akibat kesengajaan atau kelalaian berat kami, kewajiban pelindungan data pribadi yang menurut hukum tidak dapat dibatasi, dan hak konsumen yang dijamin peraturan perundang-undangan.
 4. Pelanggan menanggung klaim pihak ketiga yang timbul dari Konten Pelanggan atau pelanggaran Pasal 11 oleh anggotanya.
 

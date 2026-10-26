@@ -61,7 +61,7 @@ describe("FE-18 v2 — early bird form", () => {
     for (const line of ["Nama: Rina Kartika", "Email: rina@majujaya.co.id", "Organisasi: Maju Jaya", "Jumlah orang: 6–10 orang", "Peran: Founder atau Owner", "Bahasa: English"]) {
       expect(team.text).toContain(line);
     }
-    expect(team.text).toMatch(/Persetujuan: Syarat Program Early Bird v1\.1 dan Kebijakan Privasi v1\.1, .+ WIB/);
+    expect(team.text).toMatch(/Persetujuan: Syarat Program Early Bird v1\.0 dan Kebijakan Privasi v1\.0, .+ WIB/);
   });
 
   it("confirms to the applicant in Bahasa Indonesia by default, replies going to support", async () => {
