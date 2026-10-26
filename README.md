@@ -8,7 +8,9 @@ Moved on 26 Oct 2026 from the `landingpage` release branch of
 at the time). The app itself stays in that repository.
 
 - **Stack:** Next.js 16 (App Router) + React 19 + TypeScript, Tailwind 3.4, Vitest.
-- **UI:** Agere DS 7.0, vendored in `src/components/` (only the components this site uses).
+- **UI:** Agere DS 7, latest minor (agere-org-V1 PRD-00 D168), vendored in `src/components/` (only the
+  components this site uses). The exact version is in `src/components/README.md` (today 7.3.0); a new minor
+  lands here in the same release as in agere-org-V1.
 - **Languages:** English (default) and Bahasa Indonesia, from the header switch (cookie `agere-lang`).
 
 ## Pages
@@ -64,7 +66,7 @@ and legal versions are binding, D134–D137). Change them in both, in the same r
 - `src/modules/billing/plans.ts` — plans, prices, early bird rules
 - `src/content/legal/**` — legal documents (versions are recorded in early bird consent)
 - `src/i18n/en.json`, `src/i18n/id.json` — public copy (the files still carry the app's keys)
-- `src/components/`, `src/styles/`, `src/tokens/`, `tailwind.preset.ts` — Agere DS 7.0
+- `src/components/`, `src/styles/`, `src/tokens/`, `tailwind.preset.ts` — Agere DS 7 (same minor as the app, D168)
 
 ### Waiting on the app's decisions of 26 Oct 2026 (D162, D163; Index C-41)
 
