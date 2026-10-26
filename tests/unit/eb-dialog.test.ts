@@ -1,4 +1,4 @@
-// FE-18 — before the app opens (PO, 9 Oct 2026): the public header shows no "Sign in", and the Free and Team
+// FE-18 — before the app opens (PO, 9 Oct 2026): the public header shows no "Sign in", and the Trial and Team
 // buttons on the pricing cards open a short early bird explainer instead of a toast. The refund policy,
 // hidden 9-12 Oct, is shown again with its final text (D134).
 import { describe, expect, it, vi } from "vitest";
@@ -23,7 +23,7 @@ describe("FE-18 — early bird first", () => {
   });
 
   it("explains the early bird in English and Bahasa Indonesia", () => {
-    expect(EB_DIALOG_KEYS).toEqual(["ps.ebDialog.title", "ps.free.ctaNote", "ps.ebDialog.p1", "ps.eb.credits", "ps.ebDialog.p3", "ps.ebDialog.p4", "site.cta.earlyBird", "common.close"]);
+    expect(EB_DIALOG_KEYS).toEqual(["ps.ebDialog.title", "ps.ebDialog.lead", "ps.ebDialog.p1", "ps.eb.credits", "ps.ebDialog.p3", "ps.ebDialog.p4", "site.cta.earlyBird", "common.close"]);
     for (const k of EB_DIALOG_KEYS) {
       expect(en, k).toHaveProperty([k]);
       expect(id, k).toHaveProperty([k]);

@@ -2,40 +2,39 @@
 title: Syarat Program Early Bird agere/org
 doc: early-bird
 lang: id
-version: "1.0"
-effective_date: 2026-10-16
+version: "1.1"
+effective_date: "[tanggal terbit, sebelum R2]"
 authoritative: true
 ---
 
 # Syarat Program Early Bird agere/org
 
-Versi 1.0 · berlaku sejak 16 Oktober 2026
+Versi 1.1 · berlaku sejak [tanggal terbit, sebelum R2]
 
 Program Early Bird ditujukan bagi 10 Organisasi pertama yang memakai agere/org. Syarat ini berlaku bersama Ketentuan Layanan dan Kebijakan Privasi. Bila ada pertentangan, syarat ini yang berlaku bagi peserta (Ketentuan Layanan Pasal 1.5).
 
 ## Ringkasan
 
-- Untuk 10 Organisasi dengan 3 sampai 15 orang. Pendaftaran ditutup 8 Januari 2027.
-- Semua fitur paket Tim gratis selama 90 hari, tanpa metode pembayaran.
+- Untuk 10 Organisasi dengan 3 sampai 15 orang. Pendaftaran lewat daftar tunggu di www.agereorg.com/early-bird, tanpa tanggal tutup.
+- Semua fitur paket Tim gratis selama 60 hari, tanpa metode pembayaran.
 - Kredit AI sama dengan paket Tim: 100 per Anggota aktif per bulan, minimal 300 dan maksimal 1.500.
 - Bila Anda berlangganan paket Tim paling lambat 7 hari setelah masa early bird berakhir, harga per Kursi Anda tidak naik selama 12 bulan: Rp59.000 per Kursi per bulan bila ditagih tahunan, atau Rp69.000 per Kursi per bulan bila ditagih bulanan.
-- Bila Anda tidak berlangganan, Organisasi pindah ke paket Free. Tidak ada data yang dihapus.
+- Bila Anda tidak berlangganan, Organisasi menjadi Kedaluwarsa: semua data tetap dapat dibuka dan diekspor, dan tidak ada yang dihapus.
 
 Ringkasan ini hanya untuk memudahkan. Yang mengikat adalah pasal-pasal di bawah.
 
 ## 1. Siapa yang dapat ikut
 
 1. Organisasi atau badan usaha di Indonesia dengan 3 sampai 15 orang yang akan memakai agere/org untuk pekerjaan sehari-hari.
-2. Kuota 10 Organisasi. Kami memilih peserta setelah panggilan perkenalan 30 menit dengan pendiri agere, lalu mengirim hasilnya lewat email kepada pendaftar.
-3. Pendaftaran ditutup 8 Januari 2027, atau lebih awal bila kuota terisi.
+2. Kuota 10 Organisasi. Kami memilih peserta dari daftar tunggu setelah panggilan perkenalan 30 menit dengan pendiri agere, lalu mengirim hasilnya lewat email kepada pendaftar.
+3. Daftar tunggu tidak memiliki tanggal tutup. Kami mulai memilih peserta saat Layanan siap untuk pekerjaan sehari-hari tim, dan menutup program setelah kuota terisi. Masuk daftar tunggu tidak menjamin terpilih.
 4. Satu badan usaha hanya dapat menjadi satu peserta. Status peserta tidak dapat dipindahkan ke Organisasi lain.
 
 ## 2. Masa early bird
 
-1. Kami mengaktifkan peserta antara 19 Januari dan 2 Februari 2027 dan mengirim tanggal aktivasi lewat email kepada Owner.
-2. Masa early bird berlangsung 90 hari. Tanggal aktivasi dihitung sebagai hari pertama. Contoh: aktivasi 19 Januari 2027 berarti hari terakhir masa early bird adalah 18 April 2027.
-3. Atas kesepakatan bersama, peserta dapat mulai memakai agere/org sejak 11 Desember 2026. Dalam hal ini, masa 90 hari dan jatah Kredit AI tetap mulai dihitung 19 Januari 2027. Sebelum tanggal itu, fitur yang sudah tersedia dapat dipakai tanpa biaya, dan sebagian fitur, termasuk fitur AI, mungkin belum tersedia.
-4. Masa early bird menggantikan trial 14 hari dalam Ketentuan Layanan Pasal 5. Keduanya tidak digabung.
+1. Kami mengirim tanggal aktivasi lewat email kepada Owner setelah peserta terpilih. Kami tidak menjanjikan tanggal aktivasi tertentu sebelum itu.
+2. Masa early bird berlangsung 60 hari. Tanggal aktivasi dihitung sebagai hari pertama. Contoh: aktivasi 16 Maret 2027 berarti hari terakhir masa early bird adalah 14 Mei 2027.
+3. Masa early bird menggantikan trial dalam Ketentuan Layanan Pasal 5. Keduanya tidak digabung, dan perpanjangan trial tidak berlaku bagi peserta.
 
 ## 3. Manfaat selama masa early bird
 
@@ -65,15 +64,15 @@ Bila jumlah Anggota aktif melebihi 15 selama masa early bird, manfaat tetap berl
     - Rp69.000 per Kursi per bulan untuk siklus bulanan.
 2. Artinya, bila harga paket Tim naik dalam 12 bulan itu, Anda tetap membayar harga di atas. Harga terkunci bukan potongan dari harga yang berlaku saat ini.
 3. Harga terkunci berlaku untuk semua Kursi Organisasi, termasuk Kursi yang bertambah, dan untuk kedua siklus. Pindah siklus mengikuti Ketentuan Layanan Pasal 6.5.
-4. Harga terkunci berakhir lebih awal bila langganan dibatalkan dan periodenya habis, atau bila Organisasi pindah ke paket Free karena invoice tidak dibayar setelah masa tenggang.
+4. Harga terkunci berakhir lebih awal bila langganan dibatalkan dan periodenya habis, atau bila Organisasi menjadi Kedaluwarsa karena invoice tidak dibayar setelah masa tenggang.
 5. Harga terkunci tidak dapat digabung dengan diskon atau promosi lain, dan tidak dapat dipindahkan ke Organisasi lain.
 6. Harga di atas adalah jumlah yang Anda bayar per Kursi.
 
 ## 6. Bila masa early bird berakhir tanpa pembayaran
 
 1. Kami mengingatkan Owner dan Admin lewat email dan di aplikasi 14 hari dan 3 hari sebelum masa early bird berakhir.
-2. Bila belum ada pembayaran saat masa early bird berakhir, Organisasi pindah ke paket Free menurut Ketentuan Layanan Pasal 6.6. Organisasi dengan 6 Anggota aktif atau lebih mendapat tenggang 7 hari sebelum anggota dijeda, sama seperti setelah trial.
-3. Tidak ada data yang dihapus. Semua yang dijeda atau menjadi hanya-baca pulih saat Organisasi berlangganan paket Tim.
+2. Bila belum ada pembayaran saat masa early bird berakhir, Organisasi menjadi Kedaluwarsa menurut Ketentuan Layanan Pasal 6.6. Tidak ada anggota yang dijeda.
+3. Tidak ada data yang dihapus. Semua anggota tetap dapat membuka, mencari, dan mengekspor data. Semuanya pulih seperti semula saat Organisasi berlangganan paket Tim; harga terkunci berlaku bila pembayaran dilakukan dalam batas waktu Pasal 4.1.
 4. Sisa jatah Kredit AI early bird berakhir bersama masa early bird. Kredit yang Anda beli tidak ikut berakhir.
 
 ## 7. Yang kami harapkan dari peserta

@@ -3,7 +3,7 @@
 // so each environment sets its own.
 import { LEGAL_DOCS, type LegalDoc } from "@/ui/legal/docs";
 
-const PUBLIC_PAGES = ["/", "/early-bird"];
+const PUBLIC_PAGES = ["/", "/harga", "/early-bird"];
 
 /** The sitemap's pages. A legal page joins once its final text replaces the draft (OPS-02). */
 export const sitemapPaths = (docs: Pick<LegalDoc, "slug" | "status">[] = LEGAL_DOCS) => [

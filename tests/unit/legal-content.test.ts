@@ -83,7 +83,7 @@ describe("FE-18 — legal markdown", () => {
   });
 });
 
-describe("FE-18 — legal documents v1.0 (D134)", () => {
+describe("FE-18 — legal documents v1.0 (D134), Indonesian v1.1 (D149–D151)", () => {
   it("publishes the four final documents in both languages", () => {
     expect(LEGAL_DOCS.map((d) => [d.slug, d.status])).toEqual([
       ["ketentuan", "final"],
@@ -93,13 +93,21 @@ describe("FE-18 — legal documents v1.0 (D134)", () => {
     ]);
   });
 
-  it("carries version 1.0 and the effective date, Indonesian binding and English a translation", () => {
+  it("carries its version and effective date, Indonesian binding and English a translation", () => {
     const docIds = { ketentuan: "terms", privasi: "privacy", refund: "refund", "early-bird": "early-bird" };
+    // D149–D151 (C-38): the Indonesian texts move to v1.1 before R2; the date is set when the PO publishes them.
+    // English stays v1.0 until it is translated from v1.1.
+    const pending = "[tanggal terbit, sebelum R2]";
     for (const { doc, lang, text } of all) {
       const { meta, blocks } = parseLegal(text);
-      expect(meta, `${doc.slug}/${lang}`).toMatchObject({ doc: docIds[doc.slug], lang, version: "1.0", effective_date: "2026-10-16", authoritative: lang === "id" });
       const stamp = plainText([blocks[1]]);
-      expect(stamp).toBe(lang === "id" ? "Versi 1.0 · berlaku sejak 16 Oktober 2026" : "Version 1.0 · effective 16 October 2026");
+      if (lang === "id") {
+        expect(meta, `${doc.slug}/${lang}`).toMatchObject({ doc: docIds[doc.slug], lang, version: "1.1", effective_date: pending, authoritative: true });
+        expect(stamp).toBe(`Versi 1.1 · berlaku sejak ${pending}`);
+      } else {
+        expect(meta, `${doc.slug}/${lang}`).toMatchObject({ doc: docIds[doc.slug], lang, version: "1.0", effective_date: "2026-10-16", authoritative: false });
+        expect(stamp).toBe("Version 1.0 · effective 16 October 2026");
+      }
     }
   });
 

@@ -1,7 +1,7 @@
 # AGENTS.md — agere design system 7
 
 Rules for building agere interfaces with `@agere/design-system`. Read before generating or reviewing UI.
-MUST and NEVER are blocking; SHOULD needs a stated reason to skip. 42 of 67 rules are enforced automatically.
+MUST and NEVER are blocking; SHOULD needs a stated reason to skip. 43 of 67 rules are enforced automatically.
 
 The bracket after each rule says how it is enforced: G01–G12 run in `npm run lint:guidelines` (G12 warns);
 `built-in` means the component or globals.css already does it; `test` is asserted in Vitest or `scripts/verify-browser.py`;
@@ -38,7 +38,7 @@ Adapted from Vercel's Web Interface Guidelines (github.com/vercel-labs/web-inter
 - MUST: Inputs keep focus and value through hydration. [review]
 - NEVER: Block paste in inputs or textareas. [G07]
 - MUST: Loading buttons show a spinner and keep their label (Button loading sets aria-busy). [built-in, test]
-- MUST: Enter submits a focused single input; in a textarea ⌘/Ctrl+Enter submits and Enter adds a line. [review]
+- MUST: Enter submits a focused single input; in a textarea ⌘/Ctrl+Enter submits and Enter adds a line. Exception: chat composers (ChatInputBar) send on Enter, add a line with Shift+Enter and also send on ⌘/Ctrl+Enter, and show that hint next to the send button. [review, test]
 - MUST: Submit stays enabled until the request starts, then disables with a spinner. [review]
 - MUST: Accept free text and validate afterwards; never swallow keystrokes. [review]
 - MUST: Errors sit next to their field (FieldError). On submit, focus the first error. [built-in, review]

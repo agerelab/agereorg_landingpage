@@ -42,7 +42,7 @@ beforeEach(() => {
 
 describe("FE-18 v2 — early bird form", () => {
   it("sends applications to the team inbox chosen by the PO", () => {
-    expect(EARLY_BIRD_INBOX).toBe("support@agereorg.com");
+    expect(EARLY_BIRD_INBOX).toBe("agereorg@gmail.com");
   });
 
   it("names every missing or wrong field at once", () => {
@@ -56,12 +56,12 @@ describe("FE-18 v2 — early bird form", () => {
     const r = await submitEarlyBirdAction({}, form({ ...valid, lang: "en" }));
     expect(r).toEqual({ ok: true, email: "rina@majujaya.co.id" });
     const team = sent[0];
-    expect(team.to).toBe("support@agereorg.com");
+    expect(team.to).toBe("agereorg@gmail.com");
     expect(team.subject).toBe("Pendaftaran early bird: Maju Jaya (6–10 orang)");
     for (const line of ["Nama: Rina Kartika", "Email: rina@majujaya.co.id", "Organisasi: Maju Jaya", "Jumlah orang: 6–10 orang", "Peran: Founder atau Owner", "Bahasa: English"]) {
       expect(team.text).toContain(line);
     }
-    expect(team.text).toMatch(/Persetujuan: Syarat Program Early Bird v1\.0 dan Kebijakan Privasi v1\.0, .+ WIB/);
+    expect(team.text).toMatch(/Persetujuan: Syarat Program Early Bird v1\.1 dan Kebijakan Privasi v1\.1, .+ WIB/);
   });
 
   it("confirms to the applicant in Bahasa Indonesia by default, replies going to support", async () => {
@@ -71,7 +71,7 @@ describe("FE-18 v2 — early bird form", () => {
     expect(ack.to).toBe("rina@majujaya.co.id");
     expect(ack.replyTo).toBe("support@agereorg.com");
     expect(ack.subject).toBe(id["eb.ack.subject"]);
-    for (const part of ["Halo Rina Kartika", "Maju Jaya", "6–10 orang", "Founder atau Owner", "8 Jan 2027", "https://www.agereorg.example/early-bird#syarat", "https://www.agereorg.example/privasi", "support@agereorg.com"]) {
+    for (const part of ["Halo Rina Kartika", "Maju Jaya", "6–10 orang", "Founder atau Owner", "daftar tunggu", "https://www.agereorg.example/early-bird#syarat", "https://www.agereorg.example/privasi", "support@agereorg.com"]) {
       expect(ack.text, part).toContain(part);
     }
   });
@@ -120,7 +120,7 @@ describe("FE-18 v2 — early bird form", () => {
   });
 
   it("Given the team email fails, Then nothing is confirmed to the applicant", async () => {
-    failSend = (to) => to === "support@agereorg.com";
+    failSend = (to) => to === "agereorg@gmail.com";
     expect(await submitEarlyBirdAction({}, form(valid))).toMatchObject({ ok: false, error: "eb.err.send" });
     expect(sent).toHaveLength(0);
   });
@@ -129,7 +129,7 @@ describe("FE-18 v2 — early bird form", () => {
     failSend = (to) => to === "rina@majujaya.co.id";
     const errors = vi.spyOn(console, "error").mockImplementation(() => {});
     expect(await submitEarlyBirdAction({}, form(valid))).toEqual({ ok: true, email: "rina@majujaya.co.id" });
-    expect(sent.map((m) => m.to)).toEqual(["support@agereorg.com"]);
+    expect(sent.map((m) => m.to)).toEqual(["agereorg@gmail.com"]);
     const logged = errors.mock.calls.flat().join(" ");
     expect(logged).toContain("confirmation");
     expect(logged).not.toContain("rina@majujaya.co.id");
@@ -180,7 +180,7 @@ describe("FE-18 v2 — early bird form", () => {
   it("slows down a flood from one address", async () => {
     for (let i = 0; i < 5; i++) await submitEarlyBirdAction({}, form(valid));
     expect(await submitEarlyBirdAction({}, form(valid))).toMatchObject({ ok: false, error: "eb.err.tooMany" });
-    expect(sent.filter((m) => m.to === "support@agereorg.com")).toHaveLength(5);
+    expect(sent.filter((m) => m.to === "agereorg@gmail.com")).toHaveLength(5);
   });
 
   it("shows the program page in English and Bahasa Indonesia", () => {

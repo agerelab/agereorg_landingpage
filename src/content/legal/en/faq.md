@@ -2,8 +2,8 @@
 title: FAQ
 doc: faq
 lang: en
-version: "1.0"
-effective_date: 2026-10-16
+version: "1.1"
+effective_date: 2026-10-19
 authoritative: false
 ---
 
@@ -15,15 +15,15 @@ A workspace for small teams: spaces, projects, and tasks on a board or list, Des
 
 ## What is the early bird program?
 
-A program for the first 10 Organizations of 3 to 15 people. Participants use every Team plan feature free for 90 days and help shape the product through feedback sessions.
+A program for the first 10 Organizations of 3 to 15 people. Participants use every Team plan feature free for 60 days and help shape the product through feedback sessions.
 
 ## How do I join?
 
-Apply with the form on this page. We invite suitable applicants to a 30-minute introductory call and send the result by email. Registration closes on 8 January 2027, or earlier if all places are filled.
+Join the waitlist with the form on this page. The program opens when agere/org is ready to use; we then invite suitable applicants to a 30-minute introductory call and send the result by email. There is no closing date, and people on the waitlist hear from us first.
 
 ## When can I start using agere/org?
 
-Participants are activated between 19 January and 2 February 2027. The 90 days start on the activation date.
+As soon as agere/org is ready to serve teams; we tell everyone on the waitlist by email. The 60 days start on the activation date.
 
 ## Do I need a card or payment method?
 
@@ -37,9 +37,9 @@ The unit of usage for AI features. Early bird participants get 100 credits per A
 
 Only AI features stop until the next allowance. Spaces, projects, tasks, and every other feature keep working.
 
-## What happens after 90 days?
+## What happens after 60 days?
 
-You choose. Continue on the Team plan, and your price per Seat is locked for 12 months if you pay no later than 7 days after the early bird period ends. Or don't continue, and your Organization moves to the Free plan. No data is deleted.
+You choose. Continue on the Team plan, and your price per Seat is locked for 12 months if you pay no later than 7 days after the early bird period ends. Or don't continue, and your Organization becomes read-only: you can still open and export everything, and it comes back in full when you subscribe. No data is deleted.
 
 ## Is our data used to train AI?
 

@@ -1,10 +1,10 @@
 "use client";
 
-// "Harga" on the public site (FE-18 v2, agere-org-landing-v2.html; PRD-20 §5.2 with D109, D110, D113, D116,
-// D117, D131): Early bird first (PO, 7 Oct 2026: it is the way in before launch), then Free and Tim
-// (recommended), with the Yearly / Monthly switch, then the notes on the trial and the apps that follow
-// (no tax text, D134).
-// Until the app opens, the Free and Team buttons explain the early bird in a dialog (PO, 9 Oct 2026).
+// "Harga" on the public site (FE-18 v2, agere-org-landing-v2.html; PRD-20 §5.2 with D110, D117, D149–D151):
+// Early bird first (PO, 7 Oct 2026: it is the way in before launch, now a waitlist until gate R2), then the
+// 14-day trial and Tim (recommended), with the Yearly / Monthly switch, then what happens after the trial
+// and the apps that follow (no tax text, D134). There is no Free plan (D149).
+// Until the app opens, the Trial and Team buttons explain the early bird in a dialog (PO, 9 Oct 2026).
 // Every number comes from src/modules/billing/plans.ts.
 import * as React from "react";
 import Link from "next/link";
@@ -13,16 +13,16 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogBody, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { translator, type Locale, type MessageKey } from "@/i18n";
-import { formatIsoDate, formatMoney, formatNumber } from "@/i18n/format";
+import { formatMoney, formatNumber } from "@/i18n/format";
 import { cn } from "@/lib/utils";
-import { EARLY_BIRD, PLANS, TRIAL_CREDITS, TRIAL_DAYS, yearlySaving, type Cycle } from "@/modules/billing/plans";
+import { EARLY_BIRD, PLANS, TRIAL_CREDITS, TRIAL_DAYS, TRIAL_EXTENSION, yearlySaving, type Cycle } from "@/modules/billing/plans";
 import { SHOW_EB_ILLUSTRATION, SOON_APPS } from "./content";
 import { EbFlight } from "./eb-flight";
 
 // The Yearly / Monthly switch looks like the DS SegmentedControl, with the saving in green next to "Yearly"
 // (PO, 7 Oct 2026); SegmentedControl only takes a plain-text label, so this is the DS ToggleGroup it is built on.
 /** The early bird dialog's copy, in reading order. */
-export const EB_DIALOG_KEYS: MessageKey[] = ["ps.ebDialog.title", "ps.free.ctaNote", "ps.ebDialog.p1", "ps.eb.credits", "ps.ebDialog.p3", "ps.ebDialog.p4", "site.cta.earlyBird", "common.close"];
+export const EB_DIALOG_KEYS: MessageKey[] = ["ps.ebDialog.title", "ps.ebDialog.lead", "ps.ebDialog.p1", "ps.eb.credits", "ps.ebDialog.p3", "ps.ebDialog.p4", "site.cta.earlyBird", "common.close"];
 
 const SEGMENT =
   "h-[30px] flex-none gap-2 rounded-md border border-transparent px-3 text-subtle shadow-none first:rounded-md last:rounded-md hover:bg-transparent hover:text-emphasis data-[state=on]:bg-default data-[state=on]:text-emphasis data-[state=on]:shadow-sm";
@@ -39,7 +39,7 @@ export function PricingSection({ locale, heading = "h2" }: { locale: Locale; hea
   };
   const money = (n: number) => formatMoney(locale, n);
   const n = (v: number) => formatNumber(locale, v);
-  const { free, team } = PLANS;
+  const { team } = PLANS;
   const ebCredits = t("ps.eb.credits", n(EARLY_BIRD.credits.perMember), n(EARLY_BIRD.credits.min), n(EARLY_BIRD.credits.max));
   const Title = heading;
   const plans = [
@@ -48,17 +48,24 @@ export function PricingSection({ locale, heading = "h2" }: { locale: Locale; hea
       note: [t("ps.eb.note1", n(EARLY_BIRD.freeDays)), t("ps.eb.note2", n(EARLY_BIRD.priceLockMonths))],
       cta: <Button asChild variant="outline" className="w-full border-transparent"><Link href="/early-bird">{t("site.cta.earlyBird")}</Link></Button>,
       footer: <Button asChild variant="link" size="sm" className="mt-auto self-start text-inverted"><Link href="/early-bird#syarat">{t("ps.eb.cta")}</Link></Button>,
-      lines: [ebCredits, t("ps.eb.f2"), t("ps.eb.f3"), t("ps.eb.f4", formatIsoDate(locale, EARLY_BIRD.closesOn))],
+      lines: [ebCredits, t("ps.eb.f2"), t("ps.eb.f3"), t("ps.eb.f4")],
     },
     {
-      id: "free", name: t("ps.free.name"), desc: t("ps.free.desc"), price: money(0), note: [t("ps.free.note", n(free.maxSeats))],
-      cta: <Button variant="outline" className="w-full" onClick={openEb}>{t("ps.free.cta")}</Button>,
-      lines: [t("ps.free.f1", n(free.maxSeats)), t("ps.free.f2", n(free.activeProjects)), t("ps.credits.org", n(free.credits.amount)), t("ps.free.f4"), t("ps.trash", n(free.trashDays)), t("ps.free.f6")],
+      id: "trial", name: t("ps.trial.name"), desc: t("ps.trial.desc"), price: money(0),
+      note: [t("ps.trial.note1", n(TRIAL_DAYS)), t("ps.trial.note2", n(TRIAL_EXTENSION.totalDays))],
+      cta: <Button variant="outline" className="w-full" onClick={openEb}>{t("ps.trial.cta", n(TRIAL_DAYS))}</Button>,
+      lines: [
+        t("ps.trial.f1"),
+        t("ps.trial.f2", n(TRIAL_CREDITS.ownDomain), n(TRIAL_CREDITS.freeEmail)),
+        t("ps.trial.f3"),
+        t("ps.trial.f4", n(TRIAL_EXTENSION.days), n(TRIAL_EXTENSION.minActiveMembers), n(TRIAL_EXTENSION.totalDays)),
+        t("ps.trial.f5"),
+      ],
     },
     {
       id: "team", name: t("ps.team.name"), badge: t("ps.team.badge"), desc: t("ps.team.desc"), price: money(team.price[cycle]),
       note: cycle === "yearly" ? [t("ps.team.perSeatYearly"), t("ps.team.perYear", money(team.price.yearly * 12))] : [t("ps.team.perSeatMonthly")],
-      cta: <Button variant="outline" className="w-full" onClick={openEb}>{t("ps.team.cta", n(TRIAL_DAYS))}</Button>,
+      cta: <Button variant="outline" className="w-full" onClick={openEb}>{t("ps.team.cta")}</Button>,
       lines: [t("ps.team.f1"), t("ps.team.f2", n(team.credits.amount)), t("ps.trash", n(team.trashDays)), t("ps.team.f4", n(team.support.replyBusinessDays)), t("ps.team.f5", n(team.minSeats))],
     },
   ];
@@ -130,7 +137,7 @@ export function PricingSection({ locale, heading = "h2" }: { locale: Locale; hea
           <div className="flex flex-col gap-4 p-6">
             <DialogHeader>
               <DialogTitle>{t("ps.ebDialog.title")}</DialogTitle>
-              <DialogDescription>{t("ps.free.ctaNote")}</DialogDescription>
+              <DialogDescription>{t("ps.ebDialog.lead")}</DialogDescription>
             </DialogHeader>
             <DialogBody>
               <ul className="flex flex-col gap-2.5 text-sm">
@@ -138,7 +145,7 @@ export function PricingSection({ locale, heading = "h2" }: { locale: Locale; hea
                   t("ps.ebDialog.p1", n(EARLY_BIRD.freeDays)),
                   ebCredits,
                   t("ps.ebDialog.p3", n(EARLY_BIRD.priceLockMonths)),
-                  t("ps.ebDialog.p4", n(EARLY_BIRD.places), n(EARLY_BIRD.minPeople), n(EARLY_BIRD.maxPeople), formatIsoDate(locale, EARLY_BIRD.closesOn)),
+                  t("ps.ebDialog.p4", n(EARLY_BIRD.places), n(EARLY_BIRD.minPeople), n(EARLY_BIRD.maxPeople)),
                 ].map((line) => (
                   <li key={line} className="flex gap-2.5"><Check aria-hidden className="mt-0.5 size-4 shrink-0 text-success-on-surface" />{line}</li>
                 ))}
@@ -153,8 +160,8 @@ export function PricingSection({ locale, heading = "h2" }: { locale: Locale; hea
       </Dialog>
       <div className="grid gap-6 md:grid-cols-2">
         <div className="flex flex-col gap-1.5">
-          <h3 className="text-sm font-semibold text-emphasis">{t("ps.trial.title", n(TRIAL_DAYS))}</h3>
-          <p className="text-[13px] text-subtle">{t("ps.trial.body", n(TRIAL_CREDITS.ownDomain), n(TRIAL_CREDITS.freeEmail))}</p>
+          <h3 className="text-sm font-semibold text-emphasis">{t("ps.after.title")}</h3>
+          <p className="text-[13px] text-subtle">{t("ps.after.body")}</p>
         </div>
         <div className="flex flex-col gap-1.5">
           <h3 className="text-sm font-semibold text-emphasis">{t("ps.soon.title")}</h3>

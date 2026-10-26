@@ -8,7 +8,7 @@
 // Both go out as HTML with the logo (PO 13 Oct 2026), the text staying as the fallback.
 import { headers } from "next/headers";
 import { translator, type Locale, type MessageKey } from "@/i18n";
-import { formatDateMedium, formatIsoDate, formatNumber, formatTime } from "@/i18n/format";
+import { formatDateMedium, formatNumber, formatTime } from "@/i18n/format";
 import { EARLY_BIRD } from "@/modules/billing/plans";
 import { maskEmail } from "@/modules/identity/crypto";
 import { emailReady, sendEmail } from "@/modules/identity/email";
@@ -85,7 +85,6 @@ export async function submitEarlyBirdAction(_prev: EarlyBirdState, form: FormDat
     "eb.ack.body",
     values.name,
     values.organization,
-    formatIsoDate(lang, EARLY_BIRD.closesOn),
     a(`eb.size.${values.size}` as MessageKey),
     a(`eb.role.${values.role}` as MessageKey),
     terms,

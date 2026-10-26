@@ -5,7 +5,7 @@
 import "server-only";
 import { createCipheriv, createDecipheriv, createHash, randomBytes } from "node:crypto";
 import { translator, type Locale } from "@/i18n";
-import { formatIsoDate, formatNumber } from "@/i18n/format";
+import { formatNumber } from "@/i18n/format";
 import { EARLY_BIRD, TRIAL_DAYS } from "@/modules/billing/plans";
 import { ROLES, SUPPORT_EMAIL, TEAM_SIZES } from "./early-bird";
 
@@ -48,9 +48,6 @@ export function openApplicant(token: string, now = Date.now()): Applicant | null
 
 export const isDecision = (d: string): d is Decision => (DECISIONS as readonly string[]).includes(d);
 
-/** Non-selected applications are deleted 90 days after applications close (Privacy Policy §10). */
-const deletedOn = () => new Date(Date.parse(EARLY_BIRD.closesOn) + 90 * 864e5).toISOString().slice(0, 10);
-
 /** The decision email in the applicant's language, shown on the decision page and then sent. "accept"
  *  invites to the 30-minute intro call (Early Bird Program Terms 1.2), with the booking page when
  *  EARLY_BIRD_BOOKING_URL is set; "deny" declines politely and says when the application is deleted. */
@@ -67,7 +64,9 @@ export function decisionMail(a: Applicant, d: Decision, base: string) {
       }
     : {
         subject: t("eb.decline.subject"),
-        text: t("eb.decline.body", a.name, a.organization, places, String(TRIAL_DAYS), formatIsoDate(a.lang, deletedOn()), privacy),
+        // No closing date while the early bird is a waitlist (D151): the email names the rule of Privacy Policy
+        // §10 (90 days after applications close) without a date.
+        text: t("eb.decline.body", a.name, a.organization, places, String(TRIAL_DAYS), privacy),
         links: [privacy, SUPPORT_EMAIL],
       };
 }

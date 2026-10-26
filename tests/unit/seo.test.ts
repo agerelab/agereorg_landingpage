@@ -44,6 +44,7 @@ describe("FE-18 — robots.txt and sitemap.xml", () => {
     process.env.APP_URL = "https://agere.example";
     expect((await sitemap()).map((entry) => entry.url)).toEqual([
       "https://agere.example/",
+      "https://agere.example/harga",
       "https://agere.example/early-bird",
       "https://agere.example/ketentuan",
       "https://agere.example/privasi",
@@ -68,7 +69,7 @@ describe("FE-18 — robots.txt and sitemap.xml", () => {
 
   it("Given a legal page is a draft, Then it stays out of the sitemap; the early bird page is listed once", () => {
     const draft = LEGAL_DOCS.map((doc) => ({ ...doc, status: "draft" as const }));
-    expect(sitemapPaths(draft)).toEqual(["/", "/early-bird"]);
-    expect(sitemapPaths()).toEqual(["/", "/early-bird", "/ketentuan", "/privasi", "/refund"]);
+    expect(sitemapPaths(draft)).toEqual(["/", "/harga", "/early-bird"]);
+    expect(sitemapPaths()).toEqual(["/", "/harga", "/early-bird", "/ketentuan", "/privasi", "/refund"]);
   });
 });

@@ -1,6 +1,6 @@
 # agere interface review checklist
 
-Generated from `src/docs/registry/interface-rules.ts`. 42 of 67 rules are enforced automatically; tick the rest in every UI pull request.
+Generated from `src/docs/registry/interface-rules.ts`. 43 of 67 rules are enforced automatically; tick the rest in every UI pull request.
 
 ## Targets & input
 
@@ -9,7 +9,7 @@ Generated from `src/docs/registry/interface-rules.ts`. 42 of 67 rules are enforc
 ## Forms
 
 - [ ] MUST: Inputs keep focus and value through hydration.
-- [ ] MUST: Enter submits a focused single input; in a textarea ⌘/Ctrl+Enter submits and Enter adds a line.
+- [ ] MUST: Enter submits a focused single input; in a textarea ⌘/Ctrl+Enter submits and Enter adds a line. Exception: chat composers (ChatInputBar) send on Enter, add a line with Shift+Enter and also send on ⌘/Ctrl+Enter, and show that hint next to the send button.
 - [ ] MUST: Submit stays enabled until the request starts, then disables with a spinner.
 - [ ] MUST: Accept free text and validate afterwards; never swallow keystrokes.
 - [ ] MUST: Errors sit next to their field (FieldError). On submit, focus the first error.

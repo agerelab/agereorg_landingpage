@@ -11,6 +11,27 @@
   animation: rise var(--ag-duration-slower) var(--ag-ease-emphasized) both;
 }
 
+/* Slide change (D139): the next window rises into place a beat after the outgoing one starts to leave; the
+   outgoing window and caption fade up and away; the new caption follows line by line. */
+.sceneIn {
+  transform-origin: 50% 100%;
+  animation: scene-in var(--ag-duration-slower) var(--ag-ease-emphasized) 120ms both;
+}
+
+.sceneOut {
+  transform-origin: 50% 0%;
+  pointer-events: none;
+  animation: scene-out var(--ag-duration-slow) var(--ag-ease-exit) both;
+}
+
+.lineIn {
+  animation: rise var(--ag-duration-slower) var(--ag-ease-emphasized) both;
+}
+
+.captionOut {
+  animation: caption-out var(--ag-duration-moderate) var(--ag-ease-exit) both;
+}
+
 .pop {
   animation: pop var(--ag-duration-slower) var(--ag-ease-emphasized) both;
 }
@@ -45,9 +66,19 @@
   animation: progress 0.8s var(--ag-ease-standard) both;
 }
 
-.progress {
-  transform-origin: left;
-  animation: progress linear both;
+@keyframes scene-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes scene-out {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-12px) scale(0.98); }
+}
+
+@keyframes caption-out {
+  from { opacity: 1; transform: none; }
+  to { opacity: 0; transform: translateY(-6px); }
 }
 
 @keyframes rise {
