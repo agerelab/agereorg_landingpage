@@ -1,6 +1,7 @@
 // "Kendali" on the public home (FE-18 v2, agere-org-landing-v2.html "trust"): what an Owner can count on, in
 // nine short promises. Each one is backed by the PRD: roles and Terbatas spaces checked on the server (PRD-04),
-// audit kept one rolling year (PRD-13 L2), OpenRouter with ZDR (D99), Postgres in Singapore, downgrade pauses
+// audit kept one rolling year (PRD-13 L2), the OpenAI API called directly with ZDR requested (D162; the copy waits for
+// the 8 Jan 2027 gate, README), Postgres in Singapore, downgrade pauses
 // instead of deleting (D83), credits stop only AI, drafts survive a dropped connection (D128), DOKU with
 // invoices 7 days ahead (D98), and a language per person (D45).
 import { BatteryLow, CircleArrowDown, EyeOff, History, Languages, MapPin, QrCode, ShieldCheck, WifiOff } from "lucide-react";

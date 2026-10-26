@@ -1,5 +1,6 @@
-// Node server for cPanel / Phusion Passenger (D147: DomaiNesia serves www.agereorg.com until the app
-// launches). Vercel does not use this file. Started by server.cjs, or `npm run start:cpanel`.
+// Node server for the same-day VPS fallback of the public site (README, Deploy; PRD-00 D163, Q-D163-1).
+// Production runs on Vercel (D164, D166), which does not use this file. Started by server.cjs, or
+// `npm run start:cpanel` (name kept from the retired cPanel host, D147).
 import { createServer } from "http";
 import { randomBytes } from "crypto";
 import { parse } from "url";
