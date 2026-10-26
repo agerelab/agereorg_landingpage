@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /** Public pricing (FE-18 v2, PRD-20 §5.2 as amended by D149): the Harga section of the site, then Tim (which the
  *  14-day trial holds too) next to Bisnis, which is not sold yet and is marked "Segera hadir" (D109; PO 19 Oct
- *  2026). Later apps carry the same mark per row. */
+ *  2026). Until the app opens, Tim carries the same mark (PO, 21 Oct 2026). Later apps carry the same mark per row. */
 export default async function Pricing() {
   const [locale, t] = await Promise.all([getLocale(), getTranslator()]);
   const cell = (c: Cell) => (c.arg === undefined ? t(c.key) : t(c.key, String(c.arg)));
@@ -34,7 +34,7 @@ export default async function Pricing() {
               <TableRow>
                 <TableHead scope="col" className="align-top">{t("pricing.feature")}</TableHead>
                 {[
-                  { id: "team", name: t("pricing.team.name"), price: PLANS.team.price.yearly, soon: false },
+                  { id: "team", name: t("pricing.team.name"), price: PLANS.team.price.yearly, soon: true },
                   { id: "business", name: t("pricing.business.name"), price: UPCOMING_PLANS.business.price.yearly, soon: true },
                 ].map((p) => (
                   <TableHead key={p.id} scope="col" className="h-auto w-[30%] whitespace-normal py-2 align-top">
