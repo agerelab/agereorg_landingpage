@@ -68,7 +68,7 @@ and legal versions are binding, D134–D137). Change them in both, in the same r
 - `src/i18n/en.json`, `src/i18n/id.json` — public copy (the files still carry the app's keys)
 - `src/components/`, `src/styles/`, `src/tokens/`, `tailwind.preset.ts` — Agere DS 7 (same minor as the app, D168)
 
-### Waiting on the app's decisions of 26 Oct 2026 (D162, D163; Index C-41)
+### Waiting on the app's decisions of 26 Oct 2026 (D162, D163, D170, D171; Index C-41, C-47)
 
 These texts change only through the legal review (OPS-02) before R2, in both repositories at once:
 
@@ -76,7 +76,8 @@ These texts change only through the legal review (OPS-02) before R2, in both rep
 |---|---|---|---|
 | `src/content/legal/*/privacy-policy.md`, `kebijakan-privasi.md` §6 "AI models" | "through a model intermediary and model providers that do not keep the data" | No intermediary: the OpenAI API is called directly (D162). Whether "do not keep" stays depends on the ZDR / Modified Abuse Monitoring request; otherwise up to 30 days of abuse-monitoring retention is disclosed | Compliance gate 8 Jan 2027 |
 | Same files, §5 and §8.3 | Providers "do not keep the data" | As above | 8 Jan 2027 |
-| Same files, §6–§7 hosting and database | Singapore | The app runs on a VPS with a managed Postgres and an S3-compatible store (D163); the location stays Singapore only if Q-D163-3, Q-D163-4 and Q-D163-6 choose it | Before R2 |
+| Same files, §6–§7 hosting and database | Singapore | Indonesia for the app (VPS, D163), agere Ops (D170), the database, self-hosted on the VPS, and its backups (D171); Singapore only for files (S3-compatible store, Q-D163-4). Sub-processors: the VPS provider and the backup-storage provider, no Postgres provider (Index C-47) | Before R2 |
+| `src/i18n/*.json` `ctl.data.*` (home, "Kendali") | No country named (PO, 26 Oct 2026, option A; was "Data in Singapore") | May name Indonesia once the Privacy Policy above says so; until then `tests/unit/public-copy.test.ts` refuses a country there | Before R2 |
 | `src/content/legal/*/terms-of-service.md`, `ketentuan-layanan.md` Article 2 | "The agere/org web app at www.agereorg.com" | `app.agereorg.com` (D165) | Before R2 |
 | `src/i18n/*.json` `ctl.ai.*` ("AI without keeping data") | Providers that do not keep data | Follows the Privacy Policy outcome above | 8 Jan 2027 |
 | `src/ui/public/site-header.tsx` "Sign in" (`SHOW_SIGN_IN`) | Links to `/masuk`, which this site redirects home | Link to `https://app.agereorg.com/masuk` (and sign-up to `/daftar`) when the flag is turned on (D165) | When the app opens |

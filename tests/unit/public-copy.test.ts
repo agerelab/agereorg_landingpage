@@ -37,6 +37,15 @@ describe("FE-18 — public copy (D134, D136)", () => {
     expect(en["mock.url"]).toBe("agereorg.com/maju-jaya/desk");
   });
 
+  // D170, D171 (Indonesia) vs Privacy Policy v1.0 §6–7 (Singapore): until OPS-02 v1.1 the public copy names
+  // no country for where data is kept (PO, 26 Oct 2026, option A). The legal pages keep their own wording.
+  it("names no data location until the Privacy Policy is revised", () => {
+    for (const lang of ["en", "id"]) {
+      expect(values(lang).filter(([, v]) => /\b(Singapore|Singapura)\b/.test(v)).map(([k]) => k), lang).toEqual([]);
+      expect(`${catalogs[lang]["ctl.data.title"]} ${catalogs[lang]["ctl.data.body"]}`, lang).not.toMatch(/\b(Singapore|Singapura|Indonesia|Jakarta)\b/);
+    }
+  });
+
   it("keeps the old FAQ keys out of the catalogs", () => {
     for (const lang of ["en", "id"]) expect(values(lang).filter(([k]) => /^faq\.(q|a)\d/.test(k)), lang).toEqual([]);
   });
